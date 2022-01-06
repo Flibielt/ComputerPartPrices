@@ -1,7 +1,7 @@
 class ComputerPart {
   String name;
   String type;
-  HashMap<LocalDate, Double> prices;
+  HashMap<LocalDate, Integer> prices;
 
   ComputerPart() {
     prices = new HashMap();
@@ -37,7 +37,7 @@ void loadData() {
 
     LocalDate date = parseDate(row.getString("date"));
     Double price = Double.parseDouble(row.getString("price"));
-    computerPart.prices.put(date, price);
+    computerPart.prices.put(date, price.intValue());
   }
 }
 
