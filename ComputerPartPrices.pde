@@ -9,6 +9,9 @@ import java.time.format.DateTimeFormatter;
 
 List<ComputerPart> computerParts;
 Set<String> computerPartNames;
+HashMap<LocalDate, Double> goldPrices;
+HashMap<LocalDate, Double> siliconPrices;
+HashMap<LocalDate, Double> bitCoinPrices;
 
 void setup() {
   fullScreen();
@@ -16,8 +19,12 @@ void setup() {
 
   computerParts = new ArrayList();
   computerPartNames = new HashSet();
+  goldPrices = new HashMap();
+  siliconPrices = new HashMap();
+  bitCoinPrices = new HashMap();
 
   loadData();
+  loadStockData();
 }
 
 void draw() {
