@@ -10,6 +10,10 @@ Gold: https://finance.yahoo.com/quote/GC%3DF?p=GC%3DF
 
 Silicon: https://finance.yahoo.com/quote/SLAB/
 
+### Events
+
+Global events worsening chip shortage: https://en.wikipedia.org/wiki/2020%E2%80%932022_global_chip_shortage
+
 ### Computer parts
 Web scrap of https://www.arukereso.hu
 
