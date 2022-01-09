@@ -6,6 +6,7 @@ float WINDOW_RIGHT_COLUMN = 0;
 float COMPUTER_PARTS_HEIGHT = 0;
 float STOCK_DATA_HEIGHT = 0;
 float EVENT_LIST_HEIGHT = 0;
+float SMALL_TEXT_SIZE = 0;
 float NORMAL_TEXT_SIZE = 0;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -23,5 +24,6 @@ void calculateElementSizes() {
   STOCK_DATA_HEIGHT = height / 5;
   EVENT_LIST_HEIGHT = height / 4;
 
+  SMALL_TEXT_SIZE = width / 125;
   NORMAL_TEXT_SIZE = width / 100;
 }
