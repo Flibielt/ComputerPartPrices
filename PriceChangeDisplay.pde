@@ -1,4 +1,5 @@
 int MAX_TEXT_COUNT = 60;
+int computerPartStartIndex = 0;
 
 void displayComputerPartNames() {
   float textX = MARGIN + SMALL_MARGIN;
@@ -11,7 +12,7 @@ void displayComputerPartNames() {
   text("Komponensek", textX, textY);
 
   String type = "";
-  for (int i = 0; i < computerParts.size(); i++) {
+  for (int i = computerPartStartIndex; i < computerParts.size(); i++) {
     ComputerPart c = computerParts.get(i);
     textY += MARGIN;
 
