@@ -23,10 +23,15 @@ void setup() {
   siliconPrices = new HashMap();
   bitCoinPrices = new HashMap();
 
+  calculateElementSizes();
+
   loadData();
   loadStockData();
 }
 
 void draw() {
   background(255);
+  displayComputerPartNames();
+  displayStockData();
+  displayEventList();
 }
