@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Set;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
 
 List<ComputerPart> computerParts;
 Set<String> computerPartNames;
+List<GlobalEvent> globalEvents;
 HashMap<LocalDate, Double> goldPrices;
 HashMap<LocalDate, Double> siliconPrices;
 HashMap<LocalDate, Double> bitCoinPrices;
@@ -19,6 +21,7 @@ void setup() {
 
   computerParts = new ArrayList();
   computerPartNames = new HashSet();
+  globalEvents = new ArrayList();
   goldPrices = new HashMap();
   siliconPrices = new HashMap();
   bitCoinPrices = new HashMap();
@@ -27,6 +30,7 @@ void setup() {
 
   loadData();
   loadStockData();
+  loadGlobalEvents();
 }
 
 void draw() {
