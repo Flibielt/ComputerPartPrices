@@ -5,7 +5,8 @@ class GlobalEvent {
   LocalDate endDate;
 
   boolean isPeriod() {
-    return ChronoUnit.DAYS.between(endDate, startDate) > 0;
+    println("days: " + ChronoUnit.DAYS.between(endDate, startDate));
+    return ChronoUnit.DAYS.between(startDate, endDate) > 0;
   }
 
   GlobalEvent(String name, String description, LocalDate date) {
