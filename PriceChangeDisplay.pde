@@ -40,20 +40,46 @@ void displayComputerPartNames() {
 
 void displayStockData() {
   float y = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN;
+  float textX = MARGIN + SMALL_MARGIN;
+  float textY = y + MARGIN;
+
   noFill();
   rect(MARGIN, y, WINDOW_LEFT_COLUMN, STOCK_DATA_HEIGHT);
   fill(0);
   textSize(NORMAL_TEXT_SIZE);
-  text("Tőzsde", MARGIN + SMALL_MARGIN, y + MARGIN);
+  text("Tőzsde", textX, textY);
+
+  textY += MARGIN;
+  text("Arany", textX + SMALL_MARGIN, textY);
+
+  textY += MARGIN;
+  text("Szilícium", textX + SMALL_MARGIN, textY);
+
+  textY += MARGIN;
+  text("BitCoin", textX + SMALL_MARGIN, textY);
 }
 
 void displayEventList() {
   float y = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN + STOCK_DATA_HEIGHT + MARGIN;
+  float textX = MARGIN + SMALL_MARGIN;
+  float textY = y + MARGIN;
+  
   noFill();
   rect(MARGIN, y, WINDOW_LEFT_COLUMN, EVENT_LIST_HEIGHT);
   fill(0);
   textSize(NORMAL_TEXT_SIZE);
-  text("Események", MARGIN + SMALL_MARGIN, y + MARGIN);
+  text("Események", textX, textY);
+
+  textX += SMALL_MARGIN;
+  for (GlobalEvent globalEvent : globalEvents) {
+    String eventText = globalEvent.name + ": " + globalEvent.startDate.format(formatter);
+    if (globalEvent.isPeriod()) {
+      eventText = eventText + " - " + globalEvent.endDate.format(formatter);
+    }
+
+    textY += MARGIN;
+    text(eventText, textX, textY);
+  }
 }
 
 void displayLeftColumn() {
