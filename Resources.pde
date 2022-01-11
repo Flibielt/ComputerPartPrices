@@ -1,4 +1,19 @@
+class Stock {
+  String name;
+  HashMap<LocalDate, Double> prices;
+
+  Stock() {
+    prices = new HashMap();
+  }
+
+  Stock(String name) {
+    this.name = name;
+    prices = new HashMap();
+  }
+}
+
 void loadGoldData() {
+  Stock stock = new Stock("Arany");
   DateTimeFormatter formatterMonthName = DateTimeFormatter.ofPattern("MM dd, yyyy");
   Table table = loadTable("gold.tsv", "header, tsv");
 
@@ -6,34 +21,29 @@ void loadGoldData() {
     String dateStr = row.getString("Date");
     LocalDate date = LocalDate.parse(dateStr, formatterMonthName);
     Double price = Double.parseDouble(row.getString("Adj Close"));
-    goldPrices.put(date, price);
+    stock.prices.put(date, price);
   }
+
+  stocks.add(stock);
 }
 
-void loadSiliconData() {
-  Table table = loadTable("SLAB.csv", "header");
+void loadStockData(String csv, String name) {
+  Stock stock = new Stock(name);
+  Table table = loadTable(csv, "header");
 
   for (TableRow row : table.rows()) {
     String dateStr = row.getString("Date");
     LocalDate date = parseDate(dateStr);
     Double price = Double.parseDouble(row.getString("Adj Close"));
-    siliconPrices.put(date, price);
+    stock.prices.put(date, price);
   }
-}
 
-void loadBitCoinData() {
-  Table table = loadTable("BTC-USD.csv", "header");
-
-  for (TableRow row : table.rows()) {
-    String dateStr = row.getString("Date");
-    LocalDate date = parseDate(dateStr);
-    Double price = Double.parseDouble(row.getString("Adj Close"));
-    bitCoinPrices.put(date, price);
-  }
+  stocks.add(stock);
 }
 
 void loadStockData() {
   loadGoldData();
-  loadSiliconData();
-  loadBitCoinData();
+  loadStockData("SLAB.csv", "Szilícium");
+  loadStockData("ETH-USD.csv", "Ethereum");
+  loadStockData("BTC-USD.csv", "BitCoin");
 }

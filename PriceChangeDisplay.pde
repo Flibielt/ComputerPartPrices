@@ -45,18 +45,18 @@ void displayStockData() {
 
   noFill();
   rect(MARGIN, y, WINDOW_LEFT_COLUMN, STOCK_DATA_HEIGHT);
+  
   fill(0);
   textSize(NORMAL_TEXT_SIZE);
   text("Tőzsde", textX, textY);
-
   textY += MARGIN;
-  text("Arany", textX + SMALL_MARGIN, textY);
+  textX += SMALL_MARGIN;
 
-  textY += MARGIN;
-  text("Szilícium", textX + SMALL_MARGIN, textY);
-
-  textY += MARGIN;
-  text("BitCoin", textX + SMALL_MARGIN, textY);
+  for (Stock stock : stocks) {
+    String name = stock.name;
+    text(name, textX, textY);
+    textY += MARGIN;
+  }
 }
 
 void displayEventList() {

@@ -11,9 +11,7 @@ import java.time.format.DateTimeFormatter;
 List<ComputerPart> computerParts;
 Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
-HashMap<LocalDate, Double> goldPrices;
-HashMap<LocalDate, Double> siliconPrices;
-HashMap<LocalDate, Double> bitCoinPrices;
+List<Stock> stocks;
 
 void setup() {
   fullScreen();
@@ -22,9 +20,7 @@ void setup() {
   computerParts = new ArrayList();
   computerPartNames = new HashSet();
   globalEvents = new ArrayList();
-  goldPrices = new HashMap();
-  siliconPrices = new HashMap();
-  bitCoinPrices = new HashMap();
+  stocks = new ArrayList();
 
   calculateElementSizes();
 
