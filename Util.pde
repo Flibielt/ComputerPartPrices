@@ -32,3 +32,7 @@ void calculateElementSizes() {
   SMALL_TEXT_SIZE = width / 125;
   NORMAL_TEXT_SIZE = width / 100;
 }
+
+boolean isMouseInComponentListArea() {
+  return mouseX > MARGIN && mouseX < MARGIN + COMPUTER_PARTS_HEIGHT && mouseY > MARGIN && mouseY < MARGIN + WINDOW_LEFT_COLUMN;
+}
