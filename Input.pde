@@ -20,6 +20,13 @@ void checkClickInComponentList() {
   for (ComputerPartType computerPartType : computerPartTypes) {
     if (computerPartType.displayed && computerPartType.isHover()) {
       computerPartType.selected = !computerPartType.selected;
+
+      for (ComputerPart computerPart : computerParts) {
+        if (computerPart.type.equals(computerPartType.name)) {
+          computerPart.selected = computerPartType.selected;
+        }
+      }
+      
       return;
     }
   }
