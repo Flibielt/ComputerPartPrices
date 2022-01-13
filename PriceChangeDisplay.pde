@@ -38,7 +38,7 @@ void displayComputerPartNames() {
         if (computerPartType.name.equals(type)) {
           computerPartType.displayed = true;
           computerPartType.x = textX;
-          computerPartType.y = textY;
+          computerPartType.y = textY - NORMAL_TEXT_SIZE / 2;
 
           if (computerPartType.selected) {
             fill(green);
@@ -72,6 +72,7 @@ void displayComputerPartNames() {
 
     c.x = textX + SMALL_MARGIN;
     c.y = textY - NORMAL_TEXT_SIZE / 2;
+    c.displayed = true;
   }
 }
 
