@@ -12,6 +12,9 @@ float CHECKBOX_WIDTH = 0;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+// Colors
+color green = color(124,252,0);
+
 LocalDate parseDate(String s) {
   return LocalDate.parse(s, formatter);
 }
