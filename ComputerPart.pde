@@ -1,6 +1,9 @@
 class ComputerPart {
   String name;
   String type;
+  float x, y;
+  boolean displayed;
+  boolean selected;
   HashMap<LocalDate, Integer> prices;
 
   ComputerPart() {
@@ -19,6 +22,24 @@ class ComputerPart {
   }
 }
 
+class ComputerPartType {
+  String name;
+  float x, y;
+  boolean displayed;
+  boolean selected;
+
+  ComputerPartType() {
+    displayed = false;
+    selected = false;
+  }
+
+  ComputerPartType(String name) {
+    this.name = name;
+    displayed = false;
+    selected = false;
+  }
+}
+
 void loadData() {
   Table partPrices;
   partPrices = loadTable("data.csv", "header");
@@ -33,6 +54,9 @@ void loadData() {
 
       computerParts.add(computerPart);
       computerPartNames.add(name);
+
+      ComputerPartType computerPartType = new ComputerPartType(productType);
+      computerPartTypes.add(computerPartType);
     }
 
     LocalDate date = parseDate(row.getString("date"));

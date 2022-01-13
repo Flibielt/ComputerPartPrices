@@ -11,6 +11,14 @@ void displayComputerPartNames() {
   textSize(NORMAL_TEXT_SIZE);
   text("Komponensek", textX, textY);
 
+  for (ComputerPart computerPart : computerParts) {
+    computerPart.displayed = false;
+  }
+
+  for (ComputerPartType computerPartType : computerPartTypes) {
+    computerPartType.displayed = false;
+  }
+
   String type = "";
   for (int i = computerPartStartIndex; i < computerParts.size(); i++) {
     ComputerPart c = computerParts.get(i);
@@ -21,11 +29,29 @@ void displayComputerPartNames() {
     }
 
     if (!type.equals(c.type)) {
+      type = c.type;
       textSize(NORMAL_TEXT_SIZE);
       textY += SMALL_MARGIN;
-      text(c.type + ":", textX, textY);
+      text(c.type + ":", textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
+
+      for (ComputerPartType computerPartType : computerPartTypes) {
+        if (computerPartType.name.equals(type)) {
+          computerPartType.displayed = true;
+          computerPartType.x = textX;
+          computerPartType.y = textY;
+
+          if (computerPartType.selected) {
+            fill(green);
+          } else {
+            fill(255);
+          }
+          rect(textX, textY - NORMAL_TEXT_SIZE / 2, CHECKBOX_WIDTH, CHECKBOX_WIDTH);
+          fill(0);
+          break;
+        }
+      }
+
       textY += MARGIN;
-      type = c.type;
     }
 
     if (textY + textAscent() >= COMPUTER_PARTS_HEIGHT) {
@@ -34,7 +60,18 @@ void displayComputerPartNames() {
 
     textSize(SMALL_TEXT_SIZE);
     int charCount = (c.name.length() >= MAX_TEXT_COUNT) ? MAX_TEXT_COUNT : c.name.length();
-    text(c.name.toCharArray(), 0, charCount, textX + SMALL_MARGIN, textY);
+    text(c.name.toCharArray(), 0, charCount, textX + SMALL_MARGIN + MARGIN, textY);
+
+    if (c.selected) {
+      fill(green);
+    } else {
+      fill(255);
+    }
+    rect(textX + SMALL_MARGIN, textY - NORMAL_TEXT_SIZE / 2, CHECKBOX_WIDTH, CHECKBOX_WIDTH);
+    fill(0);
+
+    c.x = textX + SMALL_MARGIN;
+    c.y = textY - NORMAL_TEXT_SIZE / 2;
   }
 }
 

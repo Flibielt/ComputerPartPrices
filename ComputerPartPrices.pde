@@ -9,6 +9,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
 
 List<ComputerPart> computerParts;
+List<ComputerPartType> computerPartTypes;
 Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
@@ -18,6 +19,7 @@ void setup() {
   surface.setTitle("Computer part prices");
 
   computerParts = new ArrayList();
+  computerPartTypes = new ArrayList();
   computerPartNames = new HashSet();
   globalEvents = new ArrayList();
   stocks = new ArrayList();
