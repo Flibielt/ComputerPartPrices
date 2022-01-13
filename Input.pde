@@ -7,3 +7,27 @@ void mouseWheel(MouseEvent event) {
     }
   }
 }
+
+void mouseClicked() {
+  if (mouseX < WINDOW_LEFT_COLUMN) {
+    if (isMouseInComponentListArea()) {
+      checkClickInComponentList();
+    }
+  }
+}
+
+void checkClickInComponentList() {
+  for (ComputerPartType computerPartType : computerPartTypes) {
+    if (computerPartType.displayed && computerPartType.isHover()) {
+      computerPartType.selected = !computerPartType.selected;
+      return;
+    }
+  }
+
+  for (ComputerPart computerPart : computerParts) {
+    if (computerPart.displayed && computerPart.isHover()) {
+      computerPart.selected = !computerPart.selected;
+      return;
+    }
+  }
+}
