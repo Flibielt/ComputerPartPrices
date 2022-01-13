@@ -20,6 +20,10 @@ class ComputerPart {
   public String toString() {
     return "name: " + name + "\ntype: " + type + "\n prices: " + prices;
   }
+
+  boolean isHover() {
+    return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
+  }
 }
 
 class ComputerPartType {
@@ -37,6 +41,10 @@ class ComputerPartType {
     this.name = name;
     displayed = false;
     selected = false;
+  }
+
+  boolean isHover() {
+    return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
   }
 }
 
