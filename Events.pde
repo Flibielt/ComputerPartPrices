@@ -1,8 +1,10 @@
 class GlobalEvent {
   String name;
   String description;
+  float x, y;
   LocalDate startDate;
   LocalDate endDate;
+  boolean selected;
 
   boolean isPeriod() {
     return ChronoUnit.DAYS.between(startDate, endDate) > 0;
@@ -20,6 +22,10 @@ class GlobalEvent {
     this.description = description;
     this.startDate = startDate;
     this.endDate = endDate;
+  }
+
+  boolean isHover() {
+    return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
   }
 }
 

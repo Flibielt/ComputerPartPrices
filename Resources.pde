@@ -1,6 +1,8 @@
 class Stock {
   String name;
+  float x, y;
   HashMap<LocalDate, Double> prices;
+  boolean selected;
 
   Stock() {
     prices = new HashMap();
@@ -9,6 +11,10 @@ class Stock {
   Stock(String name) {
     this.name = name;
     prices = new HashMap();
+  }
+
+  boolean isHover() {
+    return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
   }
 }
 
