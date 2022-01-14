@@ -1,7 +1,7 @@
 void mouseWheel(MouseEvent event) {
   int count = event.getCount();
 
-  if (mouseX >= MARGIN && mouseX <= WINDOW_LEFT_COLUMN + MARGIN && mouseY >= MARGIN && mouseY <= COMPUTER_PARTS_HEIGHT + MARGIN) {
+  if (isMouseInComponentListArea()) {
     if ((count < 0 && computerPartStartIndex > 0) || (count > 0 && computerPartStartIndex < computerParts.size() - 1)) {
       computerPartStartIndex += count;
     }
@@ -12,6 +12,10 @@ void mouseClicked() {
   if (mouseX < WINDOW_LEFT_COLUMN) {
     if (isMouseInComponentListArea()) {
       checkClickInComponentList();
+    } else if(isMouseInStockListArea()) {
+      checkClickInStockList();
+    } else if(isMouseInEventListArea()) {
+      checkClickOnEventList();
     }
   }
 }
@@ -34,6 +38,24 @@ void checkClickInComponentList() {
   for (ComputerPart computerPart : computerParts) {
     if (computerPart.displayed && computerPart.isHover()) {
       computerPart.selected = !computerPart.selected;
+      return;
+    }
+  }
+}
+
+void checkClickInStockList() {
+  for (Stock stock : stocks) {
+    if (stock.isHover()) {
+      stock.selected = !stock.selected;
+      return;
+    }
+  }
+}
+
+void checkClickOnEventList() {
+  for (GlobalEvent event : globalEvents) {
+    if (event.isHover()) {
+      event.selected = !event.selected;
       return;
     }
   }

@@ -87,12 +87,22 @@ void displayStockData() {
   fill(0);
   textSize(NORMAL_TEXT_SIZE);
   text("Tőzsde", textX, textY);
-  textY += MARGIN;
-  textX += SMALL_MARGIN;
+  textY += MARGIN + SMALL_MARGIN;
 
   for (Stock stock : stocks) {
     String name = stock.name;
-    text(name, textX, textY);
+    text(name, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
+    
+    if (stock.selected) {
+      fill(green);
+    } else {
+      fill(255);
+    }
+    rect(textX, textY - NORMAL_TEXT_SIZE / 2, CHECKBOX_WIDTH, CHECKBOX_WIDTH);
+    stock.x = textX;
+    stock.y = textY - NORMAL_TEXT_SIZE / 2;
+
+    fill(0);
     textY += MARGIN;
   }
 }
@@ -108,15 +118,26 @@ void displayEventList() {
   textSize(NORMAL_TEXT_SIZE);
   text("Események", textX, textY);
 
-  textX += SMALL_MARGIN;
+  textY += MARGIN + SMALL_MARGIN;
   for (GlobalEvent globalEvent : globalEvents) {
     String eventText = globalEvent.name + ": " + globalEvent.startDate.format(formatter);
     if (globalEvent.isPeriod()) {
       eventText = eventText + " - " + globalEvent.endDate.format(formatter);
     }
 
+    text(eventText, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
+
+    if (globalEvent.selected) {
+      fill(green);
+    } else {
+      fill(255);
+    }
+    rect(textX, textY - NORMAL_TEXT_SIZE / 2, CHECKBOX_WIDTH, CHECKBOX_WIDTH);
+    globalEvent.x = textX;
+    globalEvent.y = textY - NORMAL_TEXT_SIZE / 2;
+
+    fill(0);
     textY += MARGIN;
-    text(eventText, textX, textY);
   }
 }
 
