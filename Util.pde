@@ -36,3 +36,13 @@ void calculateElementSizes() {
 boolean isMouseInComponentListArea() {
   return mouseX > MARGIN && mouseX < MARGIN + COMPUTER_PARTS_HEIGHT && mouseY > MARGIN && mouseY < MARGIN + WINDOW_LEFT_COLUMN;
 }
+
+boolean isMouseInStockListArea() {
+  float stockY = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN;
+  return mouseX > MARGIN && mouseX < WINDOW_LEFT_COLUMN && mouseY > stockY && mouseY < stockY + STOCK_DATA_HEIGHT;
+}
+
+boolean isMouseInEventListArea() {
+  float eventY = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN + STOCK_DATA_HEIGHT + MARGIN;
+  return mouseX > MARGIN && mouseX < WINDOW_LEFT_COLUMN && mouseY > eventY && mouseY < eventY + EVENT_LIST_HEIGHT;
+}
