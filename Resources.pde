@@ -3,6 +3,7 @@ class Stock {
   float x, y;
   HashMap<LocalDate, Double> prices;
   boolean selected;
+  color c;
 
   Stock() {
     prices = new HashMap();
