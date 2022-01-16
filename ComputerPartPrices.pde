@@ -36,4 +36,5 @@ void draw() {
   displayComputerPartNames();
   displayStockData();
   displayEventList();
+  displayPlots();
 }
