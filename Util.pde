@@ -9,6 +9,12 @@ float EVENT_LIST_HEIGHT = 0;
 float SMALL_TEXT_SIZE = 0;
 float NORMAL_TEXT_SIZE = 0;
 float CHECKBOX_WIDTH = 0;
+float PLOT_HEIGHT = 0;
+float PLOT_WIDTH = 0;
+float DATE_PICKER_HEIGHT = 0;
+float PRODUCT_PLOT_Y = 0;
+float STOCK_PLOT_Y = 0;
+float DATE_PICKER_Y = 0;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -23,11 +29,16 @@ void calculateElementSizes() {
   MARGIN = width / 100;
   SMALL_MARGIN = MARGIN / 2;
   WINDOW_LEFT_COLUMN =  width / 4;
-  WINDOW_RIGHT_COLUMN = width - WINDOW_LEFT_COLUMN;
+  WINDOW_RIGHT_COLUMN = width - WINDOW_LEFT_COLUMN - 3 * MARGIN;
   COMPUTER_PARTS_HEIGHT = height / 2.25;
   STOCK_DATA_HEIGHT = height / 5;
   EVENT_LIST_HEIGHT = height / 4;
   CHECKBOX_WIDTH = height / 100;
+  DATE_PICKER_HEIGHT = height / 14;
+  PLOT_HEIGHT = (height - DATE_PICKER_HEIGHT - 6 * MARGIN) / 2;
+  PRODUCT_PLOT_Y = MARGIN;
+  STOCK_PLOT_Y = MARGIN + PLOT_HEIGHT + MARGIN;
+  DATE_PICKER_Y = MARGIN + PLOT_HEIGHT + MARGIN + PLOT_HEIGHT + MARGIN;
 
   SMALL_TEXT_SIZE = width / 125;
   NORMAL_TEXT_SIZE = width / 100;
