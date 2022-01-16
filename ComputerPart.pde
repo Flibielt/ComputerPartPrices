@@ -5,6 +5,7 @@ class ComputerPart {
   boolean displayed;
   boolean selected;
   color c;
+  LocalDate minDate, maxDate;
   HashMap<LocalDate, Integer> prices;
 
   ComputerPart() {

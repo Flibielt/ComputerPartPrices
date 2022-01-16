@@ -6,6 +6,7 @@ class GlobalEvent {
   LocalDate endDate;
   boolean selected;
   color c;
+  LocalDate minDate, maxDate;
 
   boolean isPeriod() {
     return ChronoUnit.DAYS.between(startDate, endDate) > 0;

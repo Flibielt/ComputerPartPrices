@@ -1,9 +1,10 @@
 class Stock {
   String name;
   float x, y;
-  HashMap<LocalDate, Double> prices;
   boolean selected;
   color c;
+  LocalDate minDate, maxDate;
+  HashMap<LocalDate, Double> prices;
 
   Stock() {
     prices = new HashMap();
