@@ -14,6 +14,9 @@ Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
+DataVisualization computerPartPlot = new DataVisualization();
+DataVisualization ctockPlot = new DataVisualization();
+
 void setup() {
   fullScreen();
   surface.setTitle("Computer part prices");
@@ -25,8 +28,8 @@ void setup() {
   stocks = new ArrayList();
 
   calculateElementSizes();
-  globalMaxDate = parseDate("2020-12-31");
-  globalMinDate = parseDate("2000-01-01");
+  globalMaxDate = parseDate("2000-01-01");
+  globalMinDate = parseDate("2022-11-31");
 
   loadData();
   loadStockData();
