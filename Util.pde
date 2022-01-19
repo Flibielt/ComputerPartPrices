@@ -16,9 +16,10 @@ float PRODUCT_PLOT_Y = 0;
 float STOCK_PLOT_Y = 0;
 float DATE_PICKER_Y = 0;
 
-// Values for the plots
+// Selected data limits
 double stockMaxPrice = 0;
 int computerPartMaxPrice = 0;
+LocalDate globalMinDate, globalMaxDate;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -70,6 +71,12 @@ void findMaxStockPrice() {
       if (stock.maxPrice > stockMaxPrice) {
         stockMaxPrice = stock.maxPrice;
       }
+      
+      if (stock.maxDate.isAfter(globalMaxDate)) {
+        globalMaxDate = stock.maxDate;
+      } else if (stock.minDate.isBefore(globalMinDate)) {
+        globalMinDate = stock.minDate;
+      }
     }
   }
 
@@ -85,6 +92,12 @@ void findMaxComputerPartPrice() {
     if (computerPart.selected) {
       if (computerPart.maxPrice > computerPartMaxPrice) {
         computerPartMaxPrice = computerPart.maxPrice;
+      }
+      
+      if (computerPart.maxDate.isAfter(globalMaxDate)) {
+        globalMaxDate = computerPart.maxDate;
+      } else if (computerPart.minDate.isBefore(globalMinDate)) {
+        globalMinDate = computerPart.minDate;
       }
     }
   }

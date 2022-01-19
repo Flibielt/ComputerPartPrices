@@ -25,6 +25,8 @@ void setup() {
   stocks = new ArrayList();
 
   calculateElementSizes();
+  globalMaxDate = parseDate("2020-12-31");
+  globalMinDate = parseDate("2000-01-01");
 
   loadData();
   loadStockData();
