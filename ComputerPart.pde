@@ -4,7 +4,7 @@ class ComputerPart {
   float x, y;
   boolean displayed;
   boolean selected;
-  color c;
+  color displayedColor;
   LocalDate minDate, maxDate;
   int maxPrice;
   HashMap<LocalDate, Integer> prices;

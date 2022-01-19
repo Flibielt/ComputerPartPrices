@@ -2,7 +2,7 @@ class Stock {
   String name;
   float x, y;
   boolean selected;
-  color c;
+  color displayedColor;
   LocalDate minDate, maxDate;
   double maxPrice;
   HashMap<LocalDate, Double> prices;
