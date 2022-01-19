@@ -6,6 +6,7 @@ class ComputerPart {
   boolean selected;
   color c;
   LocalDate minDate, maxDate;
+  int maxPrice;
   HashMap<LocalDate, Integer> prices;
 
   ComputerPart() {
@@ -25,6 +26,33 @@ class ComputerPart {
 
   boolean isHover() {
     return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
+  }
+
+  void findDataLimits() {
+    LocalDate minDate, maxDate;
+    int max;
+
+    max = 0;
+    minDate = parseDate("2022-01-19");
+    maxDate = parseDate("2000-01-01");
+
+    for (LocalDate date : prices.keySet()) {
+      int price = prices.get(date);
+
+      if (price > max) {
+        max = price;
+      }
+
+      if (minDate.isBefore(date)) {
+        minDate = date;
+      } else if (maxDate.isAfter(date)) {
+        maxDate = date;
+      }
+    }
+
+    this.minDate = minDate;
+    this.maxDate = maxDate;
+    this.maxPrice = max;
   }
 }
 
@@ -72,6 +100,10 @@ void loadData() {
     LocalDate date = parseDate(row.getString("date"));
     Double price = Double.parseDouble(row.getString("price"));
     computerPart.prices.put(date, price.intValue());
+  }
+
+  for (ComputerPart c : computerParts) {
+    c.findDataLimits();
   }
 }
 
