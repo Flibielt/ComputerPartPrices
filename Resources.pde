@@ -4,6 +4,7 @@ class Stock {
   boolean selected;
   color c;
   LocalDate minDate, maxDate;
+  double maxPrice;
   HashMap<LocalDate, Double> prices;
 
   Stock() {
@@ -17,6 +18,33 @@ class Stock {
 
   boolean isHover() {
     return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
+  }
+
+  void findDataLimits() {
+    LocalDate minDate, maxDate;
+    double max;
+
+    max = 0;
+    minDate = parseDate("2022-01-19");
+    maxDate = parseDate("2000-01-01");
+
+    for (LocalDate date : prices.keySet()) {
+      double price = prices.get(date);
+
+      if (price > max) {
+        max = price;
+      }
+
+      if (minDate.isBefore(date)) {
+        minDate = date;
+      } else if (maxDate.isAfter(date)) {
+        maxDate = date;
+      }
+    }
+
+    this.minDate = minDate;
+    this.maxDate = maxDate;
+    this.maxPrice = max;
   }
 }
 
@@ -39,4 +67,8 @@ void loadStockData() {
   loadStockData("SLAB.csv", "Szilícium");
   loadStockData("ETH-USD.csv", "Ethereum");
   loadStockData("BTC-USD.csv", "BitCoin");
+
+  for (Stock stock : stocks) {
+    stock.findDataLimits();
+  }
 }
