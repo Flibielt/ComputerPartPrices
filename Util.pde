@@ -108,6 +108,9 @@ void findMaxComputerPartPrice() {
   }
 }
 
-long getDaysBetween(LocalDate dateBefore, LocalDate dateAfter) {
-  return ChronoUnit.DAYS.between(dateBefore, dateAfter);
+long getDaysBetween(LocalDate date1, LocalDate date2) {
+  if (date1.isBefore(date2)) {
+    return ChronoUnit.DAYS.between(date1, date2);
+  }
+  return ChronoUnit.DAYS.between(date2, date1);
 }
