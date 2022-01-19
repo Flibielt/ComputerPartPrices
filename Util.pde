@@ -16,6 +16,10 @@ float PRODUCT_PLOT_Y = 0;
 float STOCK_PLOT_Y = 0;
 float DATE_PICKER_Y = 0;
 
+// Values for the plots
+double stockMaxPrice = 0;
+int computerPartMaxPrice = 0;
+
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 // Colors
@@ -56,4 +60,37 @@ boolean isMouseInStockListArea() {
 boolean isMouseInEventListArea() {
   float eventY = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN + STOCK_DATA_HEIGHT + MARGIN;
   return mouseX > MARGIN && mouseX < WINDOW_LEFT_COLUMN && mouseY > eventY && mouseY < eventY + EVENT_LIST_HEIGHT;
+}
+
+void findMaxStockPrice() {
+  stockMaxPrice = 0;
+
+  for (Stock stock : stocks) {
+    if (stock.selected) {
+      if (stock.maxPrice > stockMaxPrice) {
+        stockMaxPrice = stock.maxPrice;
+      }
+    }
+  }
+
+  // Default values, so the plot can be drawn
+  if (stockMaxPrice < 1) {
+    stockMaxPrice = 100;
+  }
+}
+
+void findMaxComputerPartPrice() {
+  computerPartMaxPrice = 0;
+  for (ComputerPart computerPart : computerParts) {
+    if (computerPart.selected) {
+      if (computerPart.maxPrice > computerPartMaxPrice) {
+        computerPartMaxPrice = computerPart.maxPrice;
+      }
+    }
+  }
+
+  // Default values, so the plot can be drawn
+  if (computerPartMaxPrice < 1) {
+    computerPartMaxPrice = 100000;
+  }
 }

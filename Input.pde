@@ -31,6 +31,7 @@ void checkClickInComponentList() {
         }
       }
       
+      findMaxComputerPartPrice();
       return;
     }
   }
@@ -38,6 +39,7 @@ void checkClickInComponentList() {
   for (ComputerPart computerPart : computerParts) {
     if (computerPart.displayed && computerPart.isHover()) {
       computerPart.selected = !computerPart.selected;
+      findMaxComputerPartPrice();
       return;
     }
   }
@@ -47,6 +49,7 @@ void checkClickInStockList() {
   for (Stock stock : stocks) {
     if (stock.isHover()) {
       stock.selected = !stock.selected;
+      findMaxStockPrice();
       return;
     }
   }
