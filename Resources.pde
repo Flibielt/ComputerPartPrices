@@ -35,9 +35,9 @@ class Stock {
         max = price;
       }
 
-      if (minDate.isBefore(date)) {
+      if (date.isBefore(minDate)) {
         minDate = date;
-      } else if (maxDate.isAfter(date)) {
+      } else if (date.isAfter(maxDate)) {
         maxDate = date;
       }
     }
