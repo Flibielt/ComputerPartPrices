@@ -39,7 +39,7 @@ class DataVisualization {
     textSize(SMALL_TEXT_SIZE);
     textAlign(CENTER);
 
-    stroke(224);
+    stroke(DEFAULT_STROKE);
     dayPeriod = daysBetween / 4;
     for (int day = 0; day < daysBetween; day++) {
       if (day % dayPeriod == 0) {
@@ -60,7 +60,7 @@ class DataVisualization {
     fill(0);
     textSize(SMALL_TEXT_SIZE);
     textAlign(RIGHT);
-    stroke(224);
+    stroke(DEFAULT_STROKE);
     
     int volumeIntervalMinor = dataMax / 5; 
 

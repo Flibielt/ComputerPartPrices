@@ -26,6 +26,7 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 // Colors
 color green = color(124,252,0);
+int DEFAULT_STROKE = 224;
 
 LocalDate parseDate(String s) {
   return LocalDate.parse(s, formatter);
@@ -35,16 +36,16 @@ void calculateElementSizes() {
   MARGIN = width / 100;
   SMALL_MARGIN = MARGIN / 2;
   WINDOW_LEFT_COLUMN =  width / 4;
-  WINDOW_RIGHT_COLUMN = width - WINDOW_LEFT_COLUMN - 3 * MARGIN;
+  WINDOW_RIGHT_COLUMN = width - WINDOW_LEFT_COLUMN - 7 * MARGIN;
   COMPUTER_PARTS_HEIGHT = height / 2.25;
   STOCK_DATA_HEIGHT = height / 5;
   EVENT_LIST_HEIGHT = height / 4;
   CHECKBOX_WIDTH = height / 100;
   DATE_PICKER_HEIGHT = height / 14;
-  PLOT_HEIGHT = (height - DATE_PICKER_HEIGHT - 6 * MARGIN) / 2;
+  PLOT_HEIGHT = ((height - DATE_PICKER_HEIGHT - 6 * MARGIN) / 2) - 2 * MARGIN;
   PRODUCT_PLOT_Y = MARGIN;
-  STOCK_PLOT_Y = MARGIN + PLOT_HEIGHT + MARGIN;
-  DATE_PICKER_Y = MARGIN + PLOT_HEIGHT + MARGIN + PLOT_HEIGHT + MARGIN;
+  STOCK_PLOT_Y = MARGIN + PLOT_HEIGHT + 3 * MARGIN;
+  DATE_PICKER_Y = MARGIN + PLOT_HEIGHT + MARGIN + PLOT_HEIGHT + 5 * MARGIN;
 
   SMALL_TEXT_SIZE = width / 125;
   NORMAL_TEXT_SIZE = width / 100;
