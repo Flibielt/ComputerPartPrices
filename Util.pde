@@ -20,6 +20,7 @@ float DATE_PICKER_Y = 0;
 double stockMaxPrice = 0;
 int computerPartMaxPrice = 0;
 LocalDate globalMinDate, globalMaxDate;
+boolean computerPartSelected, stockSelected;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -65,11 +66,15 @@ boolean isMouseInEventListArea() {
 
 void findMaxStockPrice() {
   stockMaxPrice = 0;
-  globalMaxDate = parseDate("2000-01-01");
-  globalMinDate = parseDate("2022-11-31");
+  stockSelected = false;
+  if (!computerPartSelected) {
+    globalMaxDate = parseDate("2000-01-01");
+    globalMinDate = parseDate("2022-11-31");
+  }
 
   for (Stock stock : stocks) {
     if (stock.selected) {
+      stockSelected = true;
       if (stock.maxPrice > stockMaxPrice) {
         stockMaxPrice = stock.maxPrice;
       }
@@ -87,15 +92,23 @@ void findMaxStockPrice() {
   if (stockMaxPrice < 1) {
     stockMaxPrice = 100;
   }
+
+  if (computerPartSelected && !stockSelected) {
+    findMaxComputerPartPrice();
+  }
 }
 
 void findMaxComputerPartPrice() {
   computerPartMaxPrice = 0;
-  globalMaxDate = parseDate("2000-01-01");
-  globalMinDate = parseDate("2022-11-31");
+  computerPartSelected = false;
+  if (!stockSelected) {
+    globalMaxDate = parseDate("2000-01-01");
+    globalMinDate = parseDate("2022-11-31");
+  }
 
   for (ComputerPart computerPart : computerParts) {
     if (computerPart.selected) {
+      computerPartSelected = true;
       if (computerPart.maxPrice > computerPartMaxPrice) {
         computerPartMaxPrice = computerPart.maxPrice;
       }
@@ -112,6 +125,10 @@ void findMaxComputerPartPrice() {
   // Default values, so the plot can be drawn
   if (computerPartMaxPrice < 1) {
     computerPartMaxPrice = 100000;
+  }
+
+  if (stockSelected && !computerPartSelected) {
+    findMaxStockPrice();
   }
 }
 
