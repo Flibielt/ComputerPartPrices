@@ -8,6 +8,29 @@ class DataVisualization {
   float plotX1, plotX2, plotY1, plotY2;
   PlotDataType dataType = PlotDataType.COMPUTER_PART;
 
+  void setPosition(float plotX1, float plotX2, float plotY1, float plotY2) {
+    this.plotX1 = plotX1;
+    this.plotX2 = plotX2;
+    this.plotY1 = plotY1;
+    this.plotY2 = plotY2;
+  }
+
+  void display() {
+    if (this.dataType == PlotDataType.COMPUTER_PART) {
+      dataMax = computerPartMaxPrice;
+    } else if (this.dataType == PlotDataType.STOCK) {
+      dataMax = (int)stockMaxPrice;
+    }
+
+    if (dataMax < 1) {
+      dataMax = 1000;
+    }
+
+    drawTimeLabel();
+    drawVolumeLabel();
+    drawDataCurve();
+  }
+
   void drawTimeLabel() {
     long dayPeriod;
     long daysBetween = getDaysBetween(globalMinDate, globalMaxDate);
@@ -28,6 +51,7 @@ class DataVisualization {
     }
 
     stroke(0);
+    textAlign(LEFT);
   }
 
   void drawVolumeLabel() {
@@ -53,6 +77,7 @@ class DataVisualization {
     }
 
     stroke(0);
+    textAlign(LEFT);
   }
   
   void drawDataCurve() {
@@ -90,7 +115,7 @@ class DataVisualization {
 
       int value = computerPart.prices.get(currentDate);
       
-      float x = map(day, 0, daysBetween, plotX1, plotX2);
+      float x = map(getDaysBetween(globalMinDate, currentDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
       float y = map(value, dataMin, dataMax, plotY2, plotY1);
       
       curveVertex(x, y);
@@ -123,7 +148,7 @@ class DataVisualization {
 
       int value = stock.prices.get(currentDate).intValue();
       
-      float x = map(day, 0, daysBetween, plotX1, plotX2);
+      float x = map(getDaysBetween(globalMinDate, currentDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
       float y = map(value, dataMin, dataMax, plotY2, plotY1);
       
       curveVertex(x, y);
