@@ -65,6 +65,8 @@ boolean isMouseInEventListArea() {
 
 void findMaxStockPrice() {
   stockMaxPrice = 0;
+  globalMaxDate = parseDate("2000-01-01");
+  globalMinDate = parseDate("2022-11-31");
 
   for (Stock stock : stocks) {
     if (stock.selected) {
@@ -74,7 +76,8 @@ void findMaxStockPrice() {
       
       if (stock.maxDate.isAfter(globalMaxDate)) {
         globalMaxDate = stock.maxDate;
-      } else if (stock.minDate.isBefore(globalMinDate)) {
+      }
+      if (stock.minDate.isBefore(globalMinDate)) {
         globalMinDate = stock.minDate;
       }
     }
@@ -88,6 +91,9 @@ void findMaxStockPrice() {
 
 void findMaxComputerPartPrice() {
   computerPartMaxPrice = 0;
+  globalMaxDate = parseDate("2000-01-01");
+  globalMinDate = parseDate("2022-11-31");
+
   for (ComputerPart computerPart : computerParts) {
     if (computerPart.selected) {
       if (computerPart.maxPrice > computerPartMaxPrice) {
@@ -96,7 +102,8 @@ void findMaxComputerPartPrice() {
       
       if (computerPart.maxDate.isAfter(globalMaxDate)) {
         globalMaxDate = computerPart.maxDate;
-      } else if (computerPart.minDate.isBefore(globalMinDate)) {
+      }
+      if (computerPart.minDate.isBefore(globalMinDate)) {
         globalMinDate = computerPart.minDate;
       }
     }
