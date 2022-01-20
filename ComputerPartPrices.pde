@@ -15,7 +15,7 @@ List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
 DataVisualization computerPartPlot = new DataVisualization();
-DataVisualization ctockPlot = new DataVisualization();
+DataVisualization stockPlot = new DataVisualization();
 
 void setup() {
   fullScreen();
@@ -30,6 +30,9 @@ void setup() {
   calculateElementSizes();
   globalMaxDate = parseDate("2000-01-01");
   globalMinDate = parseDate("2022-11-31");
+
+  computerPartPlot.dataType = PlotDataType.COMPUTER_PART;
+  stockPlot.dataType = PlotDataType.STOCK;
 
   loadData();
   loadStockData();
