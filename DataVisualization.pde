@@ -36,10 +36,10 @@ class DataVisualization {
     long daysBetween = getDaysBetween(globalMinDate, globalMaxDate);
 
     fill(0);
-    textSize(NORMAL_TEXT_SIZE);
+    textSize(SMALL_TEXT_SIZE);
     textAlign(CENTER);
-    stroke(224);
 
+    stroke(224);
     dayPeriod = daysBetween / 4;
     for (int day = 0; day < daysBetween; day++) {
       if (day % dayPeriod == 0) {
@@ -58,7 +58,7 @@ class DataVisualization {
     int tickMark;
     float y;
     fill(0);
-    textSize(NORMAL_TEXT_SIZE);
+    textSize(SMALL_TEXT_SIZE);
     textAlign(RIGHT);
     stroke(224);
     
