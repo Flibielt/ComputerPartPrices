@@ -14,6 +14,8 @@ Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
+LocalDate selectedDate;
+
 DataVisualization computerPartPlot = new DataVisualization();
 DataVisualization stockPlot = new DataVisualization();
 
