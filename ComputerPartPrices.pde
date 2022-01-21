@@ -16,6 +16,7 @@ List<Stock> stocks;
 
 LocalDate selectedDate;
 
+HScrollbar hs1;
 DataVisualization computerPartPlot = new DataVisualization();
 DataVisualization stockPlot = new DataVisualization();
 
@@ -35,6 +36,7 @@ void setup() {
 
   computerPartPlot.dataType = PlotDataType.COMPUTER_PART;
   stockPlot.dataType = PlotDataType.STOCK;
+  initScrollbar();
 
   loadData();
   loadStockData();
@@ -47,4 +49,5 @@ void draw() {
   displayStockData();
   displayEventList();
   displayPlots();
+  displayScrollbar();
 }
