@@ -22,7 +22,17 @@ class DataVisualization {
       dataMax = (int)stockMaxPrice;
     }
 
-    if (dataMax < 1) {
+    if (dataMax > 0) {
+      if (this.dataType == PlotDataType.COMPUTER_PART) {
+        dataMax += 10000 - (dataMax % 10000);
+      } else {
+        if (dataMax > 100) {
+          dataMax += 100 - (dataMax % 100);
+        } else {
+          dataMax += 10 - (dataMax % 10);
+        }
+      }
+    } else {
       dataMax = 1000;
     }
 
@@ -72,7 +82,7 @@ class DataVisualization {
       } else if (v == dataMax) {
         textOffset = textAscent();        // Align by the top
       }
-      text(floor(v), plotX1 - 10, y + textOffset);
+      text(String.format("%,d %n", floor(v)), plotX1 - 10, y + textOffset);
       line(plotX1 - 4, y, plotX1, y);     // Draw major tick
     }
 
