@@ -9,7 +9,7 @@ void displayComputerPartNames() {
   rect(MARGIN, MARGIN, WINDOW_LEFT_COLUMN, COMPUTER_PARTS_HEIGHT);
   fill(0);
   textSize(NORMAL_TEXT_SIZE);
-  text("Komponensek", textX, textY);
+  text("Komponensek (Forint)", textX, textY);
 
   for (ComputerPart computerPart : computerParts) {
     computerPart.displayed = false;
@@ -86,7 +86,7 @@ void displayStockData() {
   
   fill(0);
   textSize(NORMAL_TEXT_SIZE);
-  text("Tőzsde", textX, textY);
+  text("Tőzsde (Dollár)", textX, textY);
   textY += MARGIN + SMALL_MARGIN;
 
   for (Stock stock : stocks) {
