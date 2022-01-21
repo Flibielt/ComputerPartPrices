@@ -1,7 +1,7 @@
 /**
- * Scrollbar. 
+ * Scrollbar.
  * 
- * Move the scrollbars left and right to change the positions of the images. 
+ * Source: https://processing.org/examples/scrollbar.html
  */
 class HScrollbar {
   int swidth, sheight;    // width and height of bar
@@ -15,25 +15,28 @@ class HScrollbar {
   int daysBetween;
 
   HScrollbar (float xp, float yp, int sw, int sh, int l) {
-    int plusDay;
-
     swidth = sw;
     sheight = sh;
     int widthtoheight = sw - sh;
     ratio = (float)sw / (float)widthtoheight;
     xpos = xp;
     ypos = yp-sheight/2;
+    loose = l;
+
+    reset();
+  }
+
+  void reset() {
+    int plusDay;
+
     spos = xpos + swidth/2 - sheight/2;
     newspos = spos;
     sposMin = xpos;
     sposMax = xpos + swidth - sheight;
-    loose = l;
 
     daysBetween = int(getDaysBetween(globalMinDate, globalMaxDate));
-
     plusDay = int(map(spos, xpos, xpos + swidth, 0, daysBetween));
-    // selectedDate = globalMinDate.plusDays(plusDay);
-    // updateCovidData();
+    selectedDate = globalMinDate.plusDays(plusDay);
   }
 
   void update() {
@@ -55,27 +58,12 @@ class HScrollbar {
     }
     if (abs(newspos - spos) > 1) {
       spos = spos + (newspos-spos)/loose;
-      //updateCovidData();
     }
 
     plusDay = int(map(spos, xpos, xpos + swidth, 0, daysBetween));
-    //selectedDate = globalMinDate.plusDays(plusDay);
+    selectedDate = globalMinDate.plusDays(plusDay);
   }
-/*
-  void updateCovidData() {
-    covidDataForDate = Collections.emptyList();
-    covidDataForDate = new ArrayList();
 
-    for (String key : countryCovidData.keySet()) {
-      for (CovidData covidData : countryCovidData.get(key)) {
-        if (covidData.getDate().equals(selectedDate)) {
-          covidDataForDate.add(covidData);
-          break;
-        }
-      }
-    }
-  }
-*/
   float constrain(float val, float minv, float maxv) {
     return min(max(val, minv), maxv);
   }
