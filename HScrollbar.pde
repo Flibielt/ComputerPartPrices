@@ -98,6 +98,7 @@ class HScrollbar {
     text(globalMaxDate.toString(), xpos + swidth, ypos + sheight + 20);
 
     stroke(0);
+    textAlign(LEFT);
   }
 
   float getPos() {
