@@ -43,7 +43,7 @@ void calculateElementSizes() {
   WINDOW_RIGHT_COLUMN = width - WINDOW_LEFT_COLUMN - 7 * MARGIN;
   COMPUTER_PARTS_HEIGHT = height / 2.25;
   STOCK_DATA_HEIGHT = height / 5;
-  EVENT_LIST_HEIGHT = height / 4;
+  EVENT_LIST_HEIGHT = height / 7;
   CHECKBOX_WIDTH = height / 100;
   DATE_PICKER_HEIGHT = height / 75;
   PLOT_HEIGHT = ((height - DATE_PICKER_HEIGHT - 6 * MARGIN) / 2) - 2 * MARGIN;
