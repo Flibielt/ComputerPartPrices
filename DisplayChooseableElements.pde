@@ -1,4 +1,4 @@
-int MAX_TEXT_COUNT = 60;
+int MAX_TEXT_COUNT = 50;
 int computerPartStartIndex = 0;
 
 void displayComputerPartNames() {
@@ -29,6 +29,7 @@ void displayComputerPartNames() {
     }
 
     if (!type.equals(c.type)) {
+      // Display component type
       type = c.type;
       textSize(NORMAL_TEXT_SIZE);
       textY += SMALL_MARGIN;
@@ -58,9 +59,21 @@ void displayComputerPartNames() {
       break;
     }
 
-    textSize(SMALL_TEXT_SIZE);
     int charCount = (c.name.length() >= MAX_TEXT_COUNT) ? MAX_TEXT_COUNT : c.name.length();
-    text(c.name.toCharArray(), 0, charCount, textX + SMALL_MARGIN + MARGIN, textY);
+    String name = "";
+    noFill();
+    if (c.selected) {
+      name = c.name.substring(0, charCount) + ": " + formatNumber(c.getPrice(selectedDate));
+      fill(c.displayedColor);
+    } else {
+      name = c.name.substring(0, charCount);
+      noFill();
+    }
+    textSize(NORMAL_TEXT_SIZE);
+    circle(textX + SMALL_MARGIN + MARGIN + textAscent() / 9, textY - textAscent() / 4, textAscent() / 2);
+    fill(0);
+    textSize(SMALL_TEXT_SIZE);
+    text(name, textX + SMALL_MARGIN + MARGIN + textAscent() / 2, textY);
 
     if (c.selected) {
       fill(GREEN_COLOR);
@@ -90,8 +103,18 @@ void displayStockData() {
   textY += MARGIN + SMALL_MARGIN;
 
   for (Stock stock : stocks) {
-    String name = stock.name + ": " + formatNumber(stock.getPrice(selectedDate));
-    text(name, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
+    String name = "";
+    noFill();
+    if (stock.selected) {
+      name = stock.name + ": " + formatNumber(stock.getPrice(selectedDate));
+      fill(stock.displayedColor);
+    } else {
+      name = stock.name;
+      noFill();
+    }
+    circle(textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2 + textAscent() / 7.5, textY - textAscent() / 4, textAscent() / 2);
+    fill(0);
+    text(name, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2 + textAscent() / 2, textY);
     
     if (stock.selected) {
       fill(GREEN_COLOR);
