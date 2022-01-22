@@ -1,7 +1,8 @@
+String lineDiagramText = "Vonaldiagram";
+String columnDiagramText = "Oszlopdiagram";
+
 void displayControls() {
   float y, buttonHeight;
-  String lineDiagramText = "Vonaldiagram";
-  String columnDiagramText = "Oszlopdiagram";
 
   textSize(NORMAL_TEXT_SIZE);
 
@@ -13,7 +14,7 @@ void displayControls() {
   } else {
     noFill();
   }
-  rect(MARGIN + SMALL_MARGIN - SMALL_MARGIN, y - 2 * SMALL_MARGIN, textWidth(lineDiagramText) + 2 * SMALL_MARGIN, buttonHeight);
+  rect(MARGIN, y - 2 * SMALL_MARGIN, textWidth(lineDiagramText) + 2 * SMALL_MARGIN, buttonHeight);
 
   if (columnDiagram) {
     fill(GREEN_COLOR);

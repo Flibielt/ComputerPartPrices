@@ -16,6 +16,8 @@ void mouseClicked() {
       checkClickInStockList();
     } else if(isMouseInEventListArea()) {
       checkClickOnEventList();
+    } else {
+      checkClickOnControlButtons();
     }
   }
 
@@ -64,6 +66,24 @@ void checkClickOnEventList() {
     if (event.isHover()) {
       event.selected = !event.selected;
       return;
+    }
+  }
+}
+
+void checkClickOnControlButtons() {
+  float y, buttonHeight;
+
+  textSize(NORMAL_TEXT_SIZE);
+  buttonHeight = textAscent() + SMALL_MARGIN;
+  y = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN + STOCK_DATA_HEIGHT + MARGIN + EVENT_LIST_HEIGHT + MARGIN + MARGIN - 2 * SMALL_MARGIN;
+
+  if (mouseY >= y && mouseY <= y + buttonHeight) {
+    if (mouseX >= MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText)) {
+      lineDiagram = true;
+      columnDiagram = false;
+    } else if (mouseX >= MARGIN + textWidth(lineDiagramText) && mouseX <= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText)) {
+      lineDiagram = false;
+      columnDiagram = true;
     }
   }
 }
