@@ -16,6 +16,12 @@ class Stock {
     prices = new HashMap();
   }
 
+  Stock(String name, color displayedColor) {
+    this.name = name;
+    this.displayedColor = displayedColor;
+    prices = new HashMap();
+  }
+
   boolean isHover() {
     return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
   }
@@ -48,8 +54,8 @@ class Stock {
   }
 }
 
-void loadStockData(String csv, String name) {
-  Stock stock = new Stock(name);
+void loadStockData(String csv, String name, color displayedColor) {
+  Stock stock = new Stock(name, displayedColor);
   Table table = loadTable(csv, "header");
 
   for (TableRow row : table.rows()) {
@@ -63,10 +69,10 @@ void loadStockData(String csv, String name) {
 }
 
 void loadStockData() {
-  loadStockData("GOLD.csv", "Arany");
-  loadStockData("SLAB.csv", "Szilícium");
-  loadStockData("ETH-USD.csv", "Ethereum");
-  loadStockData("BTC-USD.csv", "BitCoin");
+  loadStockData("GOLD.csv", "Arany", GOLD_COLOR);
+  loadStockData("SLAB.csv", "Szilícium", SILICON_COLOR);
+  loadStockData("ETH-USD.csv", "Ethereum", ETHEREUM_COLOR);
+  loadStockData("BTC-USD.csv", "BitCoin", BITCOIN_COLOR);
 
   for (Stock stock : stocks) {
     stock.findDataLimits();
