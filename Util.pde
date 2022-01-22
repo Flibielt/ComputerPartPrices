@@ -30,10 +30,15 @@ color GOLD_COLOR = color(255,215,0);
 color SILICON_COLOR = color(192,192,192);
 color ETHEREUM_COLOR = color(54,117,136);
 color BITCOIN_COLOR = color(255,165,0);
+color[] baseColors = {color(255,0,0), color(0,255,0), color(0,0,255), color(0,100,0), color(0,255,255), color(255,0,255)};
 int DEFAULT_STROKE = 224;
 
 LocalDate parseDate(String s) {
   return LocalDate.parse(s, formatter);
+}
+
+color generateRandomColor() {
+  return color(random(255), random(255), random(255));
 }
 
 void calculateElementSizes() {
