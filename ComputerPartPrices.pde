@@ -16,6 +16,7 @@ List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
 LocalDate selectedDate;
+boolean lineDiagram, columnDiagram;
 
 HScrollbar hs1;
 DataVisualization computerPartPlot = new DataVisualization();
@@ -34,6 +35,8 @@ void setup() {
   calculateElementSizes();
   globalMaxDate = parseDate("2000-01-01");
   globalMinDate = parseDate("2022-11-31");
+  lineDiagram = true;
+  columnDiagram = false;
 
   computerPartPlot.dataType = PlotDataType.COMPUTER_PART;
   stockPlot.dataType = PlotDataType.STOCK;
@@ -51,4 +54,5 @@ void draw() {
   displayEventList();
   displayPlots();
   displayScrollbar();
+  displayControls();
 }
