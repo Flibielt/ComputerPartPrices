@@ -28,6 +28,28 @@ class ComputerPart {
     return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
   }
 
+  int getPrice(LocalDate date) {
+    LocalDate nearestDate = parseDate("2000-01-01");
+
+    for (LocalDate d : prices.keySet()) {
+      if (d.isBefore(date)) {
+        nearestDate = d;
+      } else {
+        break;
+      }
+    }
+
+    if (nearestDate == null) {
+      Optional<LocalDate> optionalDate = prices.keySet().stream().findFirst();
+
+      if (optionalDate.isPresent()) {
+        nearestDate = optionalDate.get();
+      }
+    }
+
+    return prices.get(nearestDate);
+  }
+
   void findDataLimits() {
     LocalDate minDate, maxDate;
     int max;
