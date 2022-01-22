@@ -78,10 +78,10 @@ void checkClickOnControlButtons() {
   y = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN + STOCK_DATA_HEIGHT + MARGIN + EVENT_LIST_HEIGHT + MARGIN + MARGIN - 2 * SMALL_MARGIN;
 
   if (mouseY >= y && mouseY <= y + buttonHeight) {
-    if (mouseX >= MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText)) {
+    if (mouseX >= MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN) {
       lineDiagram = true;
       columnDiagram = false;
-    } else if (mouseX >= MARGIN + textWidth(lineDiagramText) && mouseX <= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText)) {
+    } else if (mouseX >= MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText) + 4 * SMALL_MARGIN) {
       lineDiagram = false;
       columnDiagram = true;
     }
