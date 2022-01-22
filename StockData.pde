@@ -27,22 +27,20 @@ class Stock {
   }
 
   double getPrice(LocalDate date) {
-    LocalDate nearestDate = parseDate("2000-01-01");
+    LocalDate nearestDate = minDate;
+    long minDayDifference = Long.MAX_VALUE;
 
     for (LocalDate d : prices.keySet()) {
-      if (d.isBefore(date)) {
+      long dayDifference = getDaysBetween(d, date);
+
+      if (dayDifference < minDayDifference) {
+        minDayDifference = dayDifference;
         nearestDate = d;
-      } else {
-        break;
       }
     }
 
     if (nearestDate == null) {
-      Optional<LocalDate> optionalDate = prices.keySet().stream().findFirst();
-
-      if (optionalDate.isPresent()) {
-        nearestDate = optionalDate.get();
-      }
+      return 0;
     }
 
     return prices.get(nearestDate);
