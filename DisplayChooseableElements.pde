@@ -41,7 +41,7 @@ void displayComputerPartNames() {
           computerPartType.y = textY - NORMAL_TEXT_SIZE / 2;
 
           if (computerPartType.selected) {
-            fill(green);
+            fill(GREEN_COLOR);
           } else {
             fill(255);
           }
@@ -63,7 +63,7 @@ void displayComputerPartNames() {
     text(c.name.toCharArray(), 0, charCount, textX + SMALL_MARGIN + MARGIN, textY);
 
     if (c.selected) {
-      fill(green);
+      fill(GREEN_COLOR);
     } else {
       fill(255);
     }
@@ -94,7 +94,7 @@ void displayStockData() {
     text(name, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
     
     if (stock.selected) {
-      fill(green);
+      fill(GREEN_COLOR);
     } else {
       fill(255);
     }
@@ -128,7 +128,7 @@ void displayEventList() {
     text(eventText, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
 
     if (globalEvent.selected) {
-      fill(green);
+      fill(GREEN_COLOR);
     } else {
       fill(255);
     }
