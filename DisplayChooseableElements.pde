@@ -90,7 +90,7 @@ void displayStockData() {
   textY += MARGIN + SMALL_MARGIN;
 
   for (Stock stock : stocks) {
-    String name = stock.name;
+    String name = stock.name + ": " + formatNumber(stock.getPrice(selectedDate));
     text(name, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);
     
     if (stock.selected) {
