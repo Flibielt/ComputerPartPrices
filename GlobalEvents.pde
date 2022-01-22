@@ -27,7 +27,9 @@ class GlobalEvent {
   }
 
   boolean isHover() {
-    return mouseX >= x && mouseX <= x + CHECKBOX_WIDTH && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
+    float elementWidth = WINDOW_LEFT_COLUMN - x;
+
+    return mouseX >= x && mouseX <= x + elementWidth && mouseY >= y && mouseY <= y + CHECKBOX_WIDTH;
   }
 }
 
