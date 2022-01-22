@@ -42,6 +42,7 @@ class HScrollbar {
   void update() {
     int plusDay;
 
+    daysBetween = int(getDaysBetween(globalMinDate, globalMaxDate));
     if (overEvent()) {
       over = true;
     } else {
