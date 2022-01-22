@@ -18,6 +18,10 @@ void mouseClicked() {
       checkClickOnEventList();
     }
   }
+
+  if (!computerPartSelected && !stockSelected) {
+    hs1.reset();
+  }
 }
 
 void checkClickInComponentList() {

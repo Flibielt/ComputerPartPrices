@@ -29,7 +29,7 @@ class HScrollbar {
   void reset() {
     int plusDay;
 
-    spos = xpos + swidth/2 - sheight/2;
+    spos = xpos + swidth / 2 - sheight / 2;
     newspos = spos;
     sposMin = xpos;
     sposMax = xpos + swidth - sheight;
