@@ -143,3 +143,15 @@ long getDaysBetween(LocalDate date1, LocalDate date2) {
   }
   return ChronoUnit.DAYS.between(date2, date1);
 }
+
+String formatNumber(int number) {
+  return String.format("%,d %n", number);
+}
+
+String formatNumber(float number) {
+  return formatNumber(floor(number));
+}
+
+String formatNumber(double number) {
+  return formatNumber((int)number);
+}
