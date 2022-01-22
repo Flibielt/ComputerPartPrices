@@ -1,3 +1,5 @@
+int selectedComponentCount = 0;
+
 void mouseWheel(MouseEvent event) {
   int count = event.getCount();
 
@@ -27,13 +29,35 @@ void mouseClicked() {
 }
 
 void checkClickInComponentList() {
+  // Manage component part types
   for (ComputerPartType computerPartType : computerPartTypes) {
     if (computerPartType.displayed && computerPartType.isHover()) {
-      computerPartType.selected = !computerPartType.selected;
+      boolean selected = !computerPartType.selected;
+      computerPartType.selected = selected;
 
       for (ComputerPart computerPart : computerParts) {
         if (computerPart.type.equals(computerPartType.name)) {
-          computerPart.selected = computerPartType.selected;
+          if (selected) {
+            // Selected the component group
+            if (computerPart.selected) {
+              // Was selected beforehand, no change needed
+            } else {
+              // Was NOT selected beforehand
+              computerPart.selected = true;
+              selectedComponentCount++;
+
+              if (selectedComponentCount <= baseColors.length) {
+                computerPart.displayedColor = baseColors[selectedComponentCount - 1];
+              } else {
+                computerPart.displayedColor = generateRandomColor();
+              }
+            }
+          } else {
+            // Deselected the component group
+            computerPart.selected = false;
+            computerPart.displayedColor = color(255);
+            selectedComponentCount--;
+          }
         }
       }
       
@@ -42,9 +66,25 @@ void checkClickInComponentList() {
     }
   }
 
+  // Manage single component part
   for (ComputerPart computerPart : computerParts) {
     if (computerPart.displayed && computerPart.isHover()) {
-      computerPart.selected = !computerPart.selected;
+      if (computerPart.selected) {
+        // Deselect the computer part
+        computerPart.selected = false;
+        computerPart.displayedColor = color(255);
+        selectedComponentCount--;
+      } else {
+        // Selected the computer part
+        computerPart.selected = true;
+        selectedComponentCount++;
+
+        if (selectedComponentCount <= baseColors.length) {
+          computerPart.displayedColor = baseColors[selectedComponentCount - 1];
+        } else {
+          computerPart.displayedColor = generateRandomColor();
+        }
+      }
       findMaxComputerPartPrice();
       return;
     }
