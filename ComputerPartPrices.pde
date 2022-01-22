@@ -55,4 +55,7 @@ void draw() {
   displayPlots();
   displayScrollbar();
   displayControls();
+
+  // Description with pop up hover, should be called at the end
+  displayGlobalEventDescription();
 }

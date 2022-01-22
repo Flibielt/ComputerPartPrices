@@ -164,6 +164,23 @@ void displayEventList() {
   }
 }
 
+void displayGlobalEventDescription() {
+  float y = MARGIN + COMPUTER_PARTS_HEIGHT + MARGIN + STOCK_DATA_HEIGHT + MARGIN;
+  float textY = y + MARGIN + MARGIN + SMALL_MARGIN;
+  float textX = MARGIN + SMALL_MARGIN;
+
+  for (GlobalEvent globalEvent : globalEvents) {
+    if (globalEvent.isHover()) {
+      float descriptionTipWidth = WINDOW_LEFT_COLUMN - (textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2);
+      fill(255);
+      rect(textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY + SMALL_MARGIN, textWidth(globalEvent.description) + 2 * SMALL_MARGIN, NORMAL_TEXT_SIZE  + SMALL_TEXT_SIZE);
+      fill(0);
+      text(globalEvent.description, textX + CHECKBOX_WIDTH + SMALL_MARGIN, textY + SMALL_MARGIN + MARGIN);
+    }
+    textY += MARGIN;
+  }
+}
+
 void displayLeftColumn() {
   displayComputerPartNames();
   displayStockData();
