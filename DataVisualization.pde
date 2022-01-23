@@ -38,6 +38,7 @@ class DataVisualization {
 
     drawTimeLabel();
     drawVolumeLabel();
+    drawEvents();
     drawDataCurve();
   }
 
@@ -88,6 +89,53 @@ class DataVisualization {
 
     stroke(0);
     textAlign(LEFT);
+  }
+
+  void drawEvents() {
+    // Global periods
+    for (GlobalEvent globalEvent : globalEvents) {
+      if (globalEvent.selected && globalEvent.isPeriod()) {
+        if (isDayBetweenSelectedDates(globalEvent.startDate) && isDayBetweenSelectedDates(globalEvent.endDate)) {
+          float x1 = 0, x2 = 0;
+
+          x1 = map(getDaysBetween(globalMinDate, globalEvent.startDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+          x2 = map(getDaysBetween(globalMinDate, globalEvent.endDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+
+          if (globalEvent.isHover()) {
+            strokeWeight(THICKER_STROKE);
+            stroke(EVENT_RED);
+          } else {
+            noStroke();
+          }
+
+          fill(PERIOD_RED);
+          rect(x1, plotY1, x2 - x1, plotY2 - plotY1);
+          fill(0);
+          stroke(DEFAULT_STROKE);
+        }
+      }
+    }
+
+    // Global event
+    for (GlobalEvent globalEvent : globalEvents) {
+      if (globalEvent.selected && !globalEvent.isPeriod()) {
+        if (isDayBetweenSelectedDates(globalEvent.startDate)) {
+          float lineWidth = 1;
+          float x = map(getDaysBetween(globalMinDate, globalEvent.startDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+
+          if (globalEvent.isHover()) {
+            lineWidth = GLOBAL_EVENT_ONE_DAY_THICKER_WIDTH;
+          } else {
+            lineWidth = GLOBAL_EVENT_ONE_DAY_DEFAULT_WIDTH;
+          }
+
+          noStroke();
+          fill(EVENT_RED);
+          rect(x, plotY1, lineWidth, plotY2 - plotY1);
+          fill(0);
+        }
+      }
+    }
   }
   
   void drawDataCurve() {

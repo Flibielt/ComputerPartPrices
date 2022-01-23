@@ -15,6 +15,8 @@ float DATE_PICKER_HEIGHT = 0;
 float PRODUCT_PLOT_Y = 0;
 float STOCK_PLOT_Y = 0;
 float DATE_PICKER_Y = 0;
+float GLOBAL_EVENT_ONE_DAY_DEFAULT_WIDTH;
+float GLOBAL_EVENT_ONE_DAY_THICKER_WIDTH;
 
 // Selected data limits
 double stockMaxPrice = 0;
@@ -30,6 +32,8 @@ color GOLD_COLOR = color(255,215,0);
 color SILICON_COLOR = color(192,192,192);
 color ETHEREUM_COLOR = color(54,117,136);
 color BITCOIN_COLOR = color(255,165,0);
+color EVENT_RED = color(220,20,60);
+color PERIOD_RED = color(255,69,0);
 color[] baseColors = {color(255,0,0), color(0,255,0), color(0,0,255), color(0,100,0), color(0,255,255), color(255,0,255)};
 int DEFAULT_STROKE = 224;
 int DEFAULT_STROKE_WIDTH = 1;
@@ -57,6 +61,8 @@ void calculateElementSizes() {
   PRODUCT_PLOT_Y = MARGIN;
   STOCK_PLOT_Y = MARGIN + PLOT_HEIGHT + 3 * MARGIN;
   DATE_PICKER_Y = MARGIN + PLOT_HEIGHT + MARGIN + PLOT_HEIGHT + 4 * MARGIN;
+  GLOBAL_EVENT_ONE_DAY_DEFAULT_WIDTH = 1;
+  GLOBAL_EVENT_ONE_DAY_THICKER_WIDTH = 3;
 
   SMALL_TEXT_SIZE = width / 125;
   NORMAL_TEXT_SIZE = width / 100;
@@ -149,6 +155,16 @@ long getDaysBetween(LocalDate date1, LocalDate date2) {
     return ChronoUnit.DAYS.between(date1, date2);
   }
   return ChronoUnit.DAYS.between(date2, date1);
+}
+
+boolean isDayBetweenSelectedDates(LocalDate date) {
+  if (globalMinDate.isBefore(date) || globalMinDate.equals(date)) {
+    if (globalMaxDate.isAfter(date) || globalMaxDate.equals(date)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 String formatNumber(int number) {
