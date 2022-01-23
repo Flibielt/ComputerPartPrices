@@ -32,6 +32,8 @@ color ETHEREUM_COLOR = color(54,117,136);
 color BITCOIN_COLOR = color(255,165,0);
 color[] baseColors = {color(255,0,0), color(0,255,0), color(0,0,255), color(0,100,0), color(0,255,255), color(255,0,255)};
 int DEFAULT_STROKE = 224;
+int DEFAULT_STROKE_WIDTH = 1;
+int THICKER_STROKE = 3;
 
 LocalDate parseDate(String s) {
   return LocalDate.parse(s, formatter);

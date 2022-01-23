@@ -112,6 +112,11 @@ class DataVisualization {
 
     noFill();
     stroke(computerPart.displayedColor);
+    if (computerPart.isHover()) {
+      strokeWeight(THICKER_STROKE);
+    } else {
+      strokeWeight(DEFAULT_STROKE_WIDTH);
+    }
     beginShape();
     
     minDate = computerPart.minDate;
@@ -137,6 +142,7 @@ class DataVisualization {
 
     endShape();
     stroke(0);
+    strokeWeight(DEFAULT_STROKE_WIDTH);
   }
 
   private void drawDataCurve(Stock stock) {
@@ -145,6 +151,11 @@ class DataVisualization {
 
     noFill();
     stroke(stock.displayedColor);
+    if (stock.isHover()) {
+      strokeWeight(THICKER_STROKE);
+    } else {
+      strokeWeight(DEFAULT_STROKE_WIDTH);
+    }
     beginShape();
     
     minDate = stock.minDate;
@@ -170,5 +181,6 @@ class DataVisualization {
 
     endShape();
     stroke(0);
+    strokeWeight(DEFAULT_STROKE_WIDTH);
   }
 }
