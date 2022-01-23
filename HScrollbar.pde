@@ -61,7 +61,7 @@ class HScrollbar {
       spos = spos + (newspos-spos)/loose;
     }
 
-    plusDay = int(map(spos, xpos, xpos + swidth, 0, daysBetween));
+    plusDay = int(map(spos, xpos, xpos + swidth - sheight, 0, daysBetween));
     selectedDate = globalMinDate.plusDays(plusDay);
   }
 
