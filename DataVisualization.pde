@@ -39,6 +39,7 @@ class DataVisualization {
     drawTimeLabel();
     drawVolumeLabel();
     drawEvents();
+    displaySelectedDate();
     drawDataCurve();
   }
 
@@ -135,6 +136,15 @@ class DataVisualization {
           fill(0);
         }
       }
+    }
+  }
+
+  void displaySelectedDate() {
+    if (stockSelected || computerPartSelected) {
+      float x = map(getDaysBetween(globalMinDate, selectedDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+      fill(GREEN_COLOR);
+      noStroke();
+      rect(x, plotY1, 1, plotY2 - plotY1);
     }
   }
   
