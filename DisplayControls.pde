@@ -27,8 +27,6 @@ void displayControls() {
   text(lineDiagramText, MARGIN + SMALL_MARGIN, y);
   text(columnDiagramText, MARGIN + SMALL_MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN, y);
 
-  if (lineDiagram) {
-    text("Dátumtól: " + dateFrom, MARGIN, y + 2 * MARGIN);
-    text("Dátumig: " + selectedDate, MARGIN, y + 3 * MARGIN);
-  }
+  text("Dátumtól: " + dateFrom, MARGIN, y + 2 * MARGIN);
+  text("Dátumig: " + selectedDate, MARGIN, y + 3 * MARGIN);
 }
