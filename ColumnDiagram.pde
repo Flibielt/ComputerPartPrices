@@ -1,7 +1,4 @@
-class ColumnDiagram {
-  boolean stockDiagram;
-  String partType;
-  int minChange, maxChange;
+void displayColumnDiagram(float x, float y, Stock stock) {
 }
 
 void displayTwoScrollbar() {
@@ -16,6 +13,6 @@ void displayTwoScrollbar() {
   hs1.display();
 
   hs2.update();
-  selectedDate2 = hs2.date;
+  dateFrom = hs2.date;
   hs2.display();
 }

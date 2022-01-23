@@ -15,7 +15,7 @@ Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
-LocalDate selectedDate, selectedDate2;
+LocalDate selectedDate, dateFrom;
 boolean lineDiagram, columnDiagram;
 
 HScrollbar hs1;
@@ -51,7 +51,7 @@ void setup() {
 void draw() {
   background(255);
   selectedDate = hs1.date;
-  selectedDate2 = hs2.date;
+  dateFrom = hs2.date;
   displayComputerPartNames();
   displayStockData();
   displayEventList();
