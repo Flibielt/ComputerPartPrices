@@ -145,6 +145,11 @@ class DataVisualization {
       fill(GREEN_COLOR);
       noStroke();
       rect(x, plotY1, 1, plotY2 - plotY1);
+
+      x = map(getDaysBetween(globalMinDate, selectedDate2), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+      rect(x, plotY1, 1, plotY2 - plotY1);
+
+      fill(0);
     }
   }
   

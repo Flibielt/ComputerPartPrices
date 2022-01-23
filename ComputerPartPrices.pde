@@ -15,10 +15,11 @@ Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
-LocalDate selectedDate;
+LocalDate selectedDate, selectedDate2;
 boolean lineDiagram, columnDiagram;
 
 HScrollbar hs1;
+HScrollbar hs2;
 DataVisualization computerPartPlot = new DataVisualization();
 DataVisualization stockPlot = new DataVisualization();
 
@@ -49,12 +50,18 @@ void setup() {
 
 void draw() {
   background(255);
+  selectedDate = hs1.date;
+  selectedDate2 = hs2.date;
   displayComputerPartNames();
   displayStockData();
   displayEventList();
-  displayPlots();
-  displayScrollbar();
   displayControls();
+  if (lineDiagram) {
+    displayPlots();
+    displayScrollbar();
+  } else {
+    displayTwoScrollbar();
+  }
 
   // Description with pop up hover, should be called at the end
   displayGlobalEventDescription();

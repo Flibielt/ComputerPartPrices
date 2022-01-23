@@ -13,6 +13,7 @@ class HScrollbar {
   boolean locked;
   float ratio;
   int daysBetween;
+  LocalDate date;
 
   HScrollbar (float xp, float yp, int sw, int sh, int l) {
     swidth = sw;
@@ -36,7 +37,7 @@ class HScrollbar {
 
     daysBetween = int(getDaysBetween(globalMinDate, globalMaxDate));
     plusDay = int(map(spos, xpos, xpos + swidth, 0, daysBetween));
-    selectedDate = globalMinDate.plusDays(plusDay);
+    date = globalMinDate.plusDays(plusDay);
   }
 
   void update() {
@@ -62,7 +63,7 @@ class HScrollbar {
     }
 
     plusDay = int(map(spos, xpos, xpos + swidth - sheight, 0, daysBetween));
-    selectedDate = globalMinDate.plusDays(plusDay);
+    date = globalMinDate.plusDays(plusDay);
   }
 
   float constrain(float val, float minv, float maxv) {
@@ -91,12 +92,14 @@ class HScrollbar {
     rect(spos, ypos, sheight, sheight);
 
     fill(0);
-    textSize(15);
-    textAlign(LEFT);
-    text(globalMinDate.toString(), xpos, ypos + sheight + 20);
+    if (columnDiagram) {
+      textSize(15);
+      textAlign(LEFT);
+      text(globalMinDate.toString(), xpos, ypos + sheight + 20);
 
-    textAlign(RIGHT);
-    text(globalMaxDate.toString(), xpos + swidth, ypos + sheight + 20);
+      textAlign(RIGHT);
+      text(globalMaxDate.toString(), xpos + swidth, ypos + sheight + 20);
+    }
 
     stroke(0);
     textAlign(LEFT);
