@@ -5,6 +5,10 @@ void displayColumnDiagrams() {
   y = MARGIN;
 
   for (Stock stock : stocks) {
+    if (y + COLUMN_DIAGRAM_HEIGHT > DATE_PICKER_Y) {
+      break;
+    }
+
     if (stock.selected) {
       displayColumnDiagram(x, y, stock);
       x += COLUMN_DIAGRAM_WIDTH + 5 * MARGIN;
@@ -13,6 +17,26 @@ void displayColumnDiagrams() {
       if (diagramInRow > 2) {
         x = MARGIN + WINDOW_LEFT_COLUMN + 5 * MARGIN;
         y += MARGIN + COLUMN_DIAGRAM_HEIGHT + MARGIN;
+        diagramInRow = 0;
+      }
+    }
+  }
+
+  for (ComputerPart computerPart : computerParts) {
+    if (y + COLUMN_DIAGRAM_HEIGHT > DATE_PICKER_Y) {
+      break;
+    }
+
+    if (computerPart.selected) {
+      displayColumnDiagram(x, y, computerPart);
+
+      x += COLUMN_DIAGRAM_WIDTH + 5 * MARGIN;
+      diagramInRow++;
+
+      if (diagramInRow > 2) {
+        x = MARGIN + WINDOW_LEFT_COLUMN + 5 * MARGIN;
+        y += MARGIN + COLUMN_DIAGRAM_HEIGHT + MARGIN;
+        diagramInRow = 0;
       }
     }
   }
@@ -37,6 +61,29 @@ void displayColumnDiagram(float x, float y, Stock stock) {
   fill(0);
   textAlign(CENTER);
   text(stock.name, x + COLUMN_DIAGRAM_WIDTH / 2, y + COLUMN_DIAGRAM_HEIGHT + MARGIN);
+  textAlign(LEFT);
+}
+
+void displayColumnDiagram(float x, float y, ComputerPart computerPart) {
+  float columnHeight = 0;
+  double maxPrice;
+  maxPrice = computerPart.getPrice(dateFrom) > computerPart.getPrice(selectedDate) ? computerPart.getPrice(dateFrom) : computerPart.getPrice(selectedDate);
+
+  noFill();
+  drawVolumeLabel(x, y, (int)maxPrice);
+  line(x, y + COLUMN_DIAGRAM_HEIGHT, x + COLUMN_DIAGRAM_WIDTH, y + COLUMN_DIAGRAM_HEIGHT);
+
+  fill(computerPart.displayedColor);
+  columnHeight = map((float)computerPart.getPrice(dateFrom), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
+  rect(x + COLUMN_DIAGRAM_WIDTH / 5, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
+
+  columnHeight = map((float)computerPart.getPrice(selectedDate), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
+  rect(x + COLUMN_DIAGRAM_WIDTH / 5 * 3, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
+
+  fill(0);
+  textAlign(CENTER);
+  int textCount = computerPart.name.length() >= MAX_TEXT_COUNT ? MAX_TEXT_COUNT : computerPart.name.length();
+  text(computerPart.name.substring(0, textCount), x + COLUMN_DIAGRAM_WIDTH / 2, y + COLUMN_DIAGRAM_HEIGHT + MARGIN);
   textAlign(LEFT);
 }
 
