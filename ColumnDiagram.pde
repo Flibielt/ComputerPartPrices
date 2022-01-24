@@ -9,7 +9,7 @@ void displayColumnDiagrams() {
       break;
     }
 
-    if (stock.selected) {
+    if (stock.selected && stock.isSelectedDateInDataset()) {
       displayColumnDiagram(x, y, stock);
       x += COLUMN_DIAGRAM_WIDTH + 5 * MARGIN;
       diagramInRow++;
@@ -27,7 +27,7 @@ void displayColumnDiagrams() {
       break;
     }
 
-    if (computerPart.selected) {
+    if (computerPart.selected && computerPart.isSelectedDateInDataset()) {
       displayColumnDiagram(x, y, computerPart);
 
       x += COLUMN_DIAGRAM_WIDTH + 5 * MARGIN;
