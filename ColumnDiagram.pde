@@ -1,4 +1,57 @@
+void displayColumnDiagrams() {
+  float x, y;
+  int diagramInRow = 0;
+  x = MARGIN + WINDOW_LEFT_COLUMN + 5 * MARGIN;
+  y = MARGIN;
+
+  for (Stock stock : stocks) {
+    if (stock.selected) {
+      displayColumnDiagram(x, y, stock);
+      x += COLUMN_DIAGRAM_WIDTH + 5 * MARGIN;
+      diagramInRow++;
+
+      if (diagramInRow > 2) {
+        x = MARGIN + WINDOW_LEFT_COLUMN + 5 * MARGIN;
+        y += MARGIN + COLUMN_DIAGRAM_HEIGHT + MARGIN;
+      }
+    }
+  }
+}
+
 void displayColumnDiagram(float x, float y, Stock stock) {
+  float columnHeight = 0;
+  double maxPrice;
+  maxPrice = stock.getPrice(dateFrom) > stock.getPrice(selectedDate) ? stock.getPrice(dateFrom) : stock.getPrice(selectedDate);
+
+  noFill();
+  drawVolumeLabel(x, y, (int)maxPrice);
+  line(x, y + COLUMN_DIAGRAM_HEIGHT, x + COLUMN_DIAGRAM_WIDTH, y + COLUMN_DIAGRAM_HEIGHT);
+
+  fill(stock.displayedColor);
+  columnHeight = map((float)stock.getPrice(dateFrom), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
+  rect(x + COLUMN_DIAGRAM_WIDTH / 5, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
+
+  columnHeight = map((float)stock.getPrice(selectedDate), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
+  rect(x + COLUMN_DIAGRAM_WIDTH / 5 * 3, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
+
+  fill(0);
+  textAlign(CENTER);
+  text(stock.name, x + COLUMN_DIAGRAM_WIDTH / 2, y + COLUMN_DIAGRAM_HEIGHT + MARGIN);
+  textAlign(LEFT);
+}
+
+void drawVolumeLabel(float x, float y, int maxPrice) {
+  fill(0);
+  textSize(SMALL_TEXT_SIZE);
+  textAlign(RIGHT);
+  
+  text(String.format("%,d %n", maxPrice), x - 10, y + textAscent());
+  line(x - 4, y, x, y);
+
+  text(String.format("%,d %n", 0), x - 10, y + COLUMN_DIAGRAM_HEIGHT);
+  line(x - 4, y, x, y + COLUMN_DIAGRAM_HEIGHT);
+
+  textAlign(LEFT);
 }
 
 void displayTwoScrollbar() {

@@ -60,6 +60,7 @@ void draw() {
     displayPlots();
     displayScrollbar();
   } else {
+    displayColumnDiagrams();
     displayTwoScrollbar();
   }
 
