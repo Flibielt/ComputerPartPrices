@@ -113,6 +113,7 @@ class DataVisualization {
           rect(x1, plotY1, x2 - x1, plotY2 - plotY1);
           fill(0);
           stroke(DEFAULT_STROKE);
+          strokeWeight(DEFAULT_STROKE_WIDTH);
         }
       }
     }
