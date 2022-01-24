@@ -143,9 +143,9 @@ void displayEventList() {
 
   textY += MARGIN + SMALL_MARGIN;
   for (GlobalEvent globalEvent : globalEvents) {
-    String eventText = globalEvent.name + ": " + globalEvent.startDate.format(formatter);
+    String eventText = globalEvent.name + ": " + globalEvent.startDate.format(dateDisplayFormatter);
     if (globalEvent.isPeriod()) {
-      eventText = eventText + " - " + globalEvent.endDate.format(formatter);
+      eventText = eventText + " - " + globalEvent.endDate.format(dateDisplayFormatter);
     }
 
     text(eventText, textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2, textY);

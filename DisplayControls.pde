@@ -40,13 +40,13 @@ void displayControls() {
     fill(0);
     text(twoSliderText, MARGIN + CHECKBOX_WIDTH + SMALL_MARGIN, y + 2 * MARGIN);
     if (twoSilderWithLineDiagram) {
-      text("Dátumtól: " + dateFrom, MARGIN, y + 3 * MARGIN);
-      text("Dátumig: " + selectedDate, MARGIN, y + 4 * MARGIN);
+      text("Dátumtól: " + dateFrom.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);
+      text("Dátumig: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 4 * MARGIN);
     } else {
-      text("Dátum: " + selectedDate, MARGIN, y + 3 * MARGIN);
+      text("Dátum: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);
     }
   } else {
-    text("Dátumtól: " + dateFrom, MARGIN, y + 2 * MARGIN);
-    text("Dátumig: " + selectedDate, MARGIN, y + 3 * MARGIN);
+    text("Dátumtól: " + dateFrom.format(dateDisplayFormatter), MARGIN, y + 2 * MARGIN);
+    text("Dátumig: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);
   }
 }

@@ -57,7 +57,7 @@ class DataVisualization {
       if (day % dayPeriod == 0) {
         float x = map(day, 0, daysBetween, plotX1, plotX2);
         LocalDate date = globalMinDate.plusDays(day);
-        text(date.toString(), x, plotY2 + textAscent() + 10);
+        text(date.format(dateDisplayFormatter), x, plotY2 + textAscent() + 10);
         line(x, plotY1, x, plotY2);
       }
     }

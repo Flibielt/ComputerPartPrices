@@ -95,10 +95,10 @@ class HScrollbar {
     if (columnDiagram) {
       textSize(15);
       textAlign(LEFT);
-      text(globalMinDate.toString(), xpos, ypos + sheight + 20);
+      text(globalMinDate.format(dateDisplayFormatter), xpos, ypos + sheight + 20);
 
       textAlign(RIGHT);
-      text(globalMaxDate.toString(), xpos + swidth, ypos + sheight + 20);
+      text(globalMaxDate.format(dateDisplayFormatter), xpos + swidth, ypos + sheight + 20);
     }
 
     stroke(0);

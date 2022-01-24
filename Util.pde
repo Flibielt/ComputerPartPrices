@@ -30,6 +30,7 @@ int VOLUME_COUNT = 5;
 int TIME_LABEL_COUNT = 8;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+DateTimeFormatter dateDisplayFormatter = DateTimeFormatter.ofPattern("yyyy. MM. dd.");
 
 // Colors
 color GREEN_COLOR = color(124,252,0);
