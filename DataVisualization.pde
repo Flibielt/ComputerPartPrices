@@ -50,9 +50,9 @@ class DataVisualization {
     fill(0);
     textSize(SMALL_TEXT_SIZE);
     textAlign(CENTER);
-
     stroke(DEFAULT_STROKE);
-    dayPeriod = daysBetween / 4;
+
+    dayPeriod = daysBetween / TIME_LABEL_COUNT;
     for (int day = 0; day < daysBetween; day++) {
       if (day % dayPeriod == 0) {
         float x = map(day, 0, daysBetween, plotX1, plotX2);
@@ -74,7 +74,7 @@ class DataVisualization {
     textAlign(RIGHT);
     stroke(DEFAULT_STROKE);
     
-    int volumeIntervalMinor = dataMax / 5; 
+    int volumeIntervalMinor = dataMax / VOLUME_COUNT; 
 
     for (float v = dataMin; v <= dataMax; v += volumeIntervalMinor) {
       y = map(v, dataMin, dataMax, plotY2, plotY1);  

@@ -26,6 +26,8 @@ int computerPartMaxPrice = 0;
 LocalDate globalMinDate, globalMaxDate;
 boolean computerPartSelected, stockSelected;
 int MAX_DAY_DIFFERENCE = 7;
+int VOLUME_COUNT = 5;
+int TIME_LABEL_COUNT = 8;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
