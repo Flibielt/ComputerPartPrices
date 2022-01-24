@@ -10,12 +10,13 @@ void displayScrollbar() {
   hs1.xpos = WINDOW_LEFT_COLUMN + 5 * MARGIN;
   hs1.ypos = DATE_PICKER_Y + DATE_PICKER_HEIGHT + SMALL_MARGIN;
 
+  hs1.update();
+  hs1.display();
+  /*
   hs2.xpos = WINDOW_LEFT_COLUMN + 5 * MARGIN;
   hs2.ypos = DATE_PICKER_Y - SMALL_MARGIN;
 
-  hs1.update();
-  hs1.display();
-
   hs2.update();
   hs2.display();
+  */
 }
