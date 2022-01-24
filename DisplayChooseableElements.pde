@@ -62,7 +62,7 @@ void displayComputerPartNames() {
     int charCount = (c.name.length() >= MAX_TEXT_COUNT) ? MAX_TEXT_COUNT : c.name.length();
     String name = "";
     noFill();
-    if (c.selected) {
+    if (c.selected && c.isSelectedDateInDataset()) {
       name = c.name.substring(0, charCount) + ": " + formatNumber(c.getPrice(selectedDate));
       fill(c.displayedColor);
     } else {
@@ -105,7 +105,7 @@ void displayStockData() {
   for (Stock stock : stocks) {
     String name = "";
     noFill();
-    if (stock.selected) {
+    if (stock.selected && stock.isSelectedDateInDataset()) {
       name = stock.name + ": " + formatNumber(stock.getPrice(selectedDate));
       fill(stock.displayedColor);
     } else {
