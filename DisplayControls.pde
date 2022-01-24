@@ -1,5 +1,7 @@
 String lineDiagramText = "Vonaldiagram";
 String columnDiagramText = "Oszlopdiagram";
+String twoSliderText = "2 csúszka";
+boolean twoSilderWithLineDiagram = false;
 
 void displayControls() {
   float y, buttonHeight;
@@ -28,7 +30,21 @@ void displayControls() {
   text(columnDiagramText, MARGIN + SMALL_MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN, y);
 
   if (lineDiagram) {
-    text("Dátum: " + selectedDate, MARGIN, y + 2 * MARGIN);
+    if (twoSilderWithLineDiagram) {
+      fill(GREEN_COLOR);
+    } else {
+      noFill();
+    }
+    rect(MARGIN, y + MARGIN + SMALL_MARGIN, CHECKBOX_WIDTH, CHECKBOX_WIDTH);
+
+    fill(0);
+    text(twoSliderText, MARGIN + CHECKBOX_WIDTH + SMALL_MARGIN, y + 2 * MARGIN);
+    if (twoSilderWithLineDiagram) {
+      text("Dátumtól: " + dateFrom, MARGIN, y + 3 * MARGIN);
+      text("Dátumig: " + selectedDate, MARGIN, y + 4 * MARGIN);
+    } else {
+      text("Dátum: " + selectedDate, MARGIN, y + 3 * MARGIN);
+    }
   } else {
     text("Dátumtól: " + dateFrom, MARGIN, y + 2 * MARGIN);
     text("Dátumig: " + selectedDate, MARGIN, y + 3 * MARGIN);

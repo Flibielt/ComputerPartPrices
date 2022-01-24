@@ -146,6 +146,11 @@ class DataVisualization {
       noStroke();
       rect(x, plotY1, 1, plotY2 - plotY1);
 
+      if (twoSilderWithLineDiagram) {
+        x = map(getDaysBetween(globalMinDate, dateFrom), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+        rect(x, plotY1, 1, plotY2 - plotY1);
+      }
+
       fill(0);
     }
   }

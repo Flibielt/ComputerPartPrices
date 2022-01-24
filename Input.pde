@@ -125,5 +125,9 @@ void checkClickOnControlButtons() {
       lineDiagram = false;
       columnDiagram = true;
     }
+  } else if (mouseY >= y + 2 * MARGIN && mouseY <= y + 2 * MARGIN + textAscent()) {
+    if (mouseX >= MARGIN && mouseX <= MARGIN + textWidth(twoSliderText) + 2 * SMALL_MARGIN) {
+      twoSilderWithLineDiagram = !twoSilderWithLineDiagram;
+    }
   }
 }
