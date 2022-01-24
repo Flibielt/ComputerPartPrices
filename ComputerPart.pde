@@ -50,6 +50,18 @@ class ComputerPart {
     return prices.get(nearestDate);
   }
 
+  boolean isSelectedDateInDataset() {
+    return !isSelectedDateTooOld();
+  }
+
+  boolean isSelectedDateTooOld() {
+    if (lineDiagram) {
+      return selectedDate.isBefore(minDate) && getDaysBetween(selectedDate, minDate) > MAX_DAY_DIFFERENCE;
+    } else {
+      return dateFrom.isBefore(minDate) && getDaysBetween(dateFrom, minDate) > MAX_DAY_DIFFERENCE;
+    }
+  }
+
   void findDataLimits() {
     LocalDate minDate, maxDate;
     int max;

@@ -25,6 +25,7 @@ double stockMaxPrice = 0;
 int computerPartMaxPrice = 0;
 LocalDate globalMinDate, globalMaxDate;
 boolean computerPartSelected, stockSelected;
+int MAX_DAY_DIFFERENCE = 7;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
