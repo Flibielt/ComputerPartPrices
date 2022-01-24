@@ -2,6 +2,20 @@
 
 Visualizing the price of computer parts with other factors, such as the market price of silicon.
 
+## Screenshots
+
+### Linediagram
+
+Shows the change of prices of the stocks and computer parts.
+
+![Linediagram](/img/linediagram.png)
+
+### Columndiagram
+
+Shows the change of price between two dates.
+
+![Columndiagram](/img/columndiagram.png)
+
 ## Sources
 ### Stock market
 BitCoin: https://finance.yahoo.com/quote/BTC-USD?p=BTC-USD
