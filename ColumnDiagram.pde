@@ -50,6 +50,7 @@ void displayColumnDiagram(float x, float y, Stock stock) {
   noFill();
   drawVolumeLabel(x, y, (int)maxPrice);
   line(x, y + COLUMN_DIAGRAM_HEIGHT, x + COLUMN_DIAGRAM_WIDTH, y + COLUMN_DIAGRAM_HEIGHT);
+  line(x, y, x, y + COLUMN_DIAGRAM_HEIGHT);
 
   fill(stock.displayedColor);
   columnHeight = map((float)stock.getPrice(dateFrom), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
@@ -72,6 +73,7 @@ void displayColumnDiagram(float x, float y, ComputerPart computerPart) {
   noFill();
   drawVolumeLabel(x, y, (int)maxPrice);
   line(x, y + COLUMN_DIAGRAM_HEIGHT, x + COLUMN_DIAGRAM_WIDTH, y + COLUMN_DIAGRAM_HEIGHT);
+  line(x, y, x, y + COLUMN_DIAGRAM_HEIGHT);
 
   fill(computerPart.displayedColor);
   columnHeight = map((float)computerPart.getPrice(dateFrom), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
@@ -96,7 +98,7 @@ void drawVolumeLabel(float x, float y, int maxPrice) {
   line(x - 4, y, x, y);
 
   text(String.format("%,d %n", 0), x - 10, y + COLUMN_DIAGRAM_HEIGHT);
-  line(x - 4, y, x, y + COLUMN_DIAGRAM_HEIGHT);
+  line(x - 4, y + COLUMN_DIAGRAM_HEIGHT, x, y + COLUMN_DIAGRAM_HEIGHT);
 
   textAlign(LEFT);
 }
