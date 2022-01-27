@@ -167,8 +167,8 @@ long getDaysBetween(LocalDate date1, LocalDate date2) {
 }
 
 boolean isDayBetweenSelectedDates(LocalDate date) {
-  if (globalMinDate.isBefore(date) || globalMinDate.equals(date)) {
-    if (globalMaxDate.isAfter(date) || globalMaxDate.equals(date)) {
+  if (dateFrom.isBefore(date) || dateFrom.equals(date)) {
+    if (dateTo.isAfter(date) || dateTo.equals(date)) {
       return true;
     }
   }

@@ -45,7 +45,9 @@ class DataVisualization {
 
   void drawTimeLabel() {
     long dayPeriod;
-    long daysBetween = getDaysBetween(globalMinDate, globalMaxDate);
+    long daysBetween = getDaysBetween(dateFrom, dateTo);
+    println(dateFrom);
+    println(dateTo);
 
     fill(0);
     textSize(SMALL_TEXT_SIZE);
@@ -53,10 +55,11 @@ class DataVisualization {
     stroke(DEFAULT_STROKE);
 
     dayPeriod = daysBetween / TIME_LABEL_COUNT;
+    dayPeriod = dayPeriod > 0 ? dayPeriod : daysBetween;
     for (int day = 0; day < daysBetween; day++) {
       if (day % dayPeriod == 0) {
         float x = map(day, 0, daysBetween, plotX1, plotX2);
-        LocalDate date = globalMinDate.plusDays(day);
+        LocalDate date = dateFrom.plusDays(day);
         text(date.format(dateDisplayFormatter), x, plotY2 + textAscent() + 10);
         line(x, plotY1, x, plotY2);
       }
@@ -99,8 +102,8 @@ class DataVisualization {
         if (isDayBetweenSelectedDates(globalEvent.startDate) && isDayBetweenSelectedDates(globalEvent.endDate)) {
           float x1 = 0, x2 = 0;
 
-          x1 = map(getDaysBetween(globalMinDate, globalEvent.startDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
-          x2 = map(getDaysBetween(globalMinDate, globalEvent.endDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+          x1 = map(getDaysBetween(dateFrom, globalEvent.startDate), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
+          x2 = map(getDaysBetween(dateFrom, globalEvent.endDate), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
 
           if (globalEvent.isHover()) {
             strokeWeight(THICKER_STROKE);
@@ -123,7 +126,7 @@ class DataVisualization {
       if (globalEvent.selected && !globalEvent.isPeriod()) {
         if (isDayBetweenSelectedDates(globalEvent.startDate)) {
           float lineWidth = 1;
-          float x = map(getDaysBetween(globalMinDate, globalEvent.startDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+          float x = map(getDaysBetween(dateFrom, globalEvent.startDate), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
 
           if (globalEvent.isHover()) {
             lineWidth = GLOBAL_EVENT_ONE_DAY_THICKER_WIDTH;
@@ -140,15 +143,26 @@ class DataVisualization {
     }
   }
 
+  void changeSelectedDate() {
+    if (mouseX >= plotX1 && mouseX <= plotX2 && mouseY >= plotY1 && mouseY <= plotY2) {
+      long days;
+      int x;
+
+      days = getDaysBetween(dateFrom, dateTo);
+      x = (int)map(mouseX, plotX1, plotX2, 0, days);
+      selectedDate = dateFrom.plusDays(x);
+    }
+  }
+
   void displaySelectedDate() {
     if (stockSelected || computerPartSelected) {
-      float x = map(getDaysBetween(globalMinDate, selectedDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+      float x = map(getDaysBetween(dateFrom, selectedDate), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
       fill(GREEN_COLOR);
       noStroke();
       rect(x, plotY1, 1, plotY2 - plotY1);
 
       if (twoSilderWithLineDiagram) {
-        x = map(getDaysBetween(globalMinDate, dateFrom), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+        x = map(getDaysBetween(dateFrom, dateFrom), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
         rect(x, plotY1, 1, plotY2 - plotY1);
       }
 
@@ -190,13 +204,16 @@ class DataVisualization {
     daysBetween = getDaysBetween(minDate, maxDate);
     for (int day = 0; day < daysBetween; day++) {
       LocalDate currentDate = minDate.plusDays(day);
+      if (!isDayBetweenSelectedDates(currentDate)) {
+        continue;
+      }
       if (!computerPart.prices.containsKey(currentDate)) {
         continue;
       }
 
       int value = computerPart.prices.get(currentDate);
       
-      float x = map(getDaysBetween(globalMinDate, currentDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+      float x = map(getDaysBetween(dateFrom, currentDate), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
       float y = map(value, dataMin, dataMax, plotY2, plotY1);
       
       curveVertex(x, y);
@@ -229,13 +246,16 @@ class DataVisualization {
     daysBetween = getDaysBetween(minDate, maxDate);
     for (int day = 0; day < daysBetween; day++) {
       LocalDate currentDate = minDate.plusDays(day);
+      if (!isDayBetweenSelectedDates(currentDate)) {
+        continue;
+      }
       if (!stock.prices.containsKey(currentDate)) {
         continue;
       }
 
       int value = stock.prices.get(currentDate).intValue();
       
-      float x = map(getDaysBetween(globalMinDate, currentDate), 0, getDaysBetween(globalMinDate, globalMaxDate), plotX1, plotX2);
+      float x = map(getDaysBetween(dateFrom, currentDate), 0, getDaysBetween(dateFrom, dateTo), plotX1, plotX2);
       float y = map(value, dataMin, dataMax, plotY2, plotY1);
       
       curveVertex(x, y);

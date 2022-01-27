@@ -45,7 +45,7 @@ void displayColumnDiagrams() {
 void displayColumnDiagram(float x, float y, Stock stock) {
   float columnHeight = 0;
   double maxPrice;
-  maxPrice = stock.getPrice(dateFrom) > stock.getPrice(selectedDate) ? stock.getPrice(dateFrom) : stock.getPrice(selectedDate);
+  maxPrice = stock.getPrice(dateFrom) > stock.getPrice(dateTo) ? stock.getPrice(dateFrom) : stock.getPrice(dateTo);
 
   noFill();
   drawVolumeLabel(x, y, (int)maxPrice);
@@ -56,7 +56,7 @@ void displayColumnDiagram(float x, float y, Stock stock) {
   columnHeight = map((float)stock.getPrice(dateFrom), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
   rect(x + COLUMN_DIAGRAM_WIDTH / 5, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
 
-  columnHeight = map((float)stock.getPrice(selectedDate), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
+  columnHeight = map((float)stock.getPrice(dateTo), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
   rect(x + COLUMN_DIAGRAM_WIDTH / 5 * 3, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
 
   fill(0);
@@ -68,7 +68,7 @@ void displayColumnDiagram(float x, float y, Stock stock) {
 void displayColumnDiagram(float x, float y, ComputerPart computerPart) {
   float columnHeight = 0;
   double maxPrice;
-  maxPrice = computerPart.getPrice(dateFrom) > computerPart.getPrice(selectedDate) ? computerPart.getPrice(dateFrom) : computerPart.getPrice(selectedDate);
+  maxPrice = computerPart.getPrice(dateFrom) > computerPart.getPrice(dateTo) ? computerPart.getPrice(dateFrom) : computerPart.getPrice(dateTo);
 
   noFill();
   drawVolumeLabel(x, y, (int)maxPrice);
@@ -79,7 +79,7 @@ void displayColumnDiagram(float x, float y, ComputerPart computerPart) {
   columnHeight = map((float)computerPart.getPrice(dateFrom), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
   rect(x + COLUMN_DIAGRAM_WIDTH / 5, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
 
-  columnHeight = map((float)computerPart.getPrice(selectedDate), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
+  columnHeight = map((float)computerPart.getPrice(dateTo), (float)0, (float)maxPrice, (float)0, COLUMN_DIAGRAM_HEIGHT);
   rect(x + COLUMN_DIAGRAM_WIDTH / 5 * 3, y + COLUMN_DIAGRAM_HEIGHT - columnHeight, COLUMN_DIAGRAM_WIDTH / 5, columnHeight);
 
   fill(0);
@@ -111,7 +111,7 @@ void displayTwoScrollbar() {
   hs2.ypos = DATE_PICKER_Y - 3 * MARGIN;
 
   hs1.update();
-  selectedDate = hs1.date;
+  dateTo = hs1.date;
   hs1.display();
 
   hs2.update();

@@ -15,7 +15,7 @@ Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 
-LocalDate selectedDate, dateFrom;
+LocalDate selectedDate, dateFrom, dateTo;
 boolean lineDiagram, columnDiagram;
 
 HScrollbar hs1;
@@ -36,6 +36,7 @@ void setup() {
   calculateElementSizes();
   globalMaxDate = parseDate("2000-01-01");
   globalMinDate = parseDate("2022-11-31");
+  selectedDate = globalMinDate;
   lineDiagram = true;
   columnDiagram = false;
 
@@ -50,7 +51,7 @@ void setup() {
 
 void draw() {
   background(255);
-  selectedDate = hs1.date;
+  dateTo = hs1.date;
   dateFrom = hs2.date;
   displayComputerPartNames();
   displayStockData();

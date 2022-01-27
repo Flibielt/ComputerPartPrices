@@ -11,9 +11,11 @@ class HScrollbar {
   int loose;              // how loose/heavy
   boolean over;           // is the mouse over the slider?
   boolean locked;
+  boolean isFrom;
   float ratio;
   int daysBetween;
   LocalDate date;
+  HScrollbar otherScrollbar;
 
   HScrollbar (float xp, float yp, int sw, int sh, int l) {
     swidth = sw;
@@ -49,7 +51,7 @@ class HScrollbar {
     } else {
       over = false;
     }
-    if (mousePressed && over) {
+    if (mousePressed && over && !otherScrollbar.locked) {
       locked = true;
     }
     if (!mousePressed) {
@@ -59,7 +61,11 @@ class HScrollbar {
       newspos = constrain(mouseX-sheight/2, sposMin, sposMax);
     }
     if (abs(newspos - spos) > 1) {
-      spos = spos + (newspos-spos)/loose;
+      if (isFrom && newspos < otherScrollbar.spos) {
+        spos = spos + (newspos-spos)/loose;
+      } else if (!isFrom && newspos > otherScrollbar.spos) {
+        spos = spos + (newspos-spos)/loose;
+      }
     }
 
     plusDay = int(map(spos, xpos, xpos + swidth - sheight, 0, daysBetween));

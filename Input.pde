@@ -28,6 +28,11 @@ void mouseClicked() {
   }
 }
 
+void mouseMoved() {
+  stockPlot.changeSelectedDate();
+  computerPartPlot.changeSelectedDate();
+}
+
 void checkClickInComponentList() {
   // Manage component part types
   for (ComputerPartType computerPartType : computerPartTypes) {
