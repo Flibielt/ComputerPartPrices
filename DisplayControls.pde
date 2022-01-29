@@ -30,21 +30,7 @@ void displayControls() {
   text(columnDiagramText, MARGIN + SMALL_MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN, y);
 
   if (lineDiagram) {
-    if (twoSilderWithLineDiagram) {
-      fill(GREEN_COLOR);
-    } else {
-      noFill();
-    }
-    rect(MARGIN, y + MARGIN + SMALL_MARGIN, CHECKBOX_WIDTH, CHECKBOX_WIDTH);
-
-    fill(0);
-    text(twoSliderText, MARGIN + CHECKBOX_WIDTH + SMALL_MARGIN, y + 2 * MARGIN);
-    if (twoSilderWithLineDiagram) {
-      text("Dátumtól: " + dateFrom.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);
-      text("Dátumig: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 4 * MARGIN);
-    } else {
-      text("Dátum: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);
-    }
+    text("Dátum: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 2 * MARGIN);
   } else {
     text("Dátumtól: " + dateFrom.format(dateDisplayFormatter), MARGIN, y + 2 * MARGIN);
     text("Dátumig: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);

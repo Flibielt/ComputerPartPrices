@@ -11,6 +11,9 @@ void mouseWheel(MouseEvent event) {
 }
 
 void mouseClicked() {
+  boolean isSelectedItemsBeforeClick;
+  isSelectedItemsBeforeClick = computerPartSelected || stockSelected;
+
   if (mouseX < WINDOW_LEFT_COLUMN) {
     if (isMouseInComponentListArea()) {
       checkClickInComponentList();
@@ -23,8 +26,11 @@ void mouseClicked() {
     }
   }
 
-  if (!computerPartSelected && !stockSelected) {
-    hs1.reset();
+  if (!isSelectedItemsBeforeClick) {
+    if (computerPartSelected || stockSelected) {
+      hs1.reset();
+      hs2.reset();
+    }
   }
 }
 
@@ -129,10 +135,6 @@ void checkClickOnControlButtons() {
     } else if (mouseX >= MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText) + 4 * SMALL_MARGIN) {
       lineDiagram = false;
       columnDiagram = true;
-    }
-  } else if (mouseY >= y + 2 * MARGIN && mouseY <= y + 2 * MARGIN + textAscent()) {
-    if (mouseX >= MARGIN && mouseX <= MARGIN + textWidth(twoSliderText) + 2 * SMALL_MARGIN) {
-      twoSilderWithLineDiagram = !twoSilderWithLineDiagram;
     }
   }
 }
