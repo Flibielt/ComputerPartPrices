@@ -32,3 +32,9 @@ Global events worsening chip shortage: https://en.wikipedia.org/wiki/2020%E2%80%
 Web scrap of https://www.arukereso.hu
 
 Web scrapping project: https://github.com/Flibielt/arukereso-web-scrap
+
+### CPU market share
+
+The market CPU market share between AMD and Intel.
+
+https://www.cpubenchmark.net/market_share.html
