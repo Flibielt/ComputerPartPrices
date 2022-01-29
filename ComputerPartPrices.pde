@@ -14,6 +14,7 @@ List<ComputerPartType> computerPartTypes;
 Set<String> computerPartNames;
 List<GlobalEvent> globalEvents;
 List<Stock> stocks;
+List<CpuMarketShare> cpuMarketshareChanges;
 
 LocalDate selectedDate, dateFrom, dateTo;
 boolean lineDiagram, columnDiagram;
@@ -32,6 +33,7 @@ void setup() {
   computerPartNames = new HashSet();
   globalEvents = new ArrayList();
   stocks = new ArrayList();
+  cpuMarketshareChanges = new ArrayList();
 
   calculateElementSizes();
   globalMaxDate = parseDate("2000-01-01");
@@ -47,6 +49,7 @@ void setup() {
   loadData();
   loadStockData();
   loadGlobalEvents();
+  loadCpuMarketShare();
 }
 
 void draw() {
