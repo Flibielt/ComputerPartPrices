@@ -46,8 +46,6 @@ class DataVisualization {
   void drawTimeLabel() {
     long dayPeriod;
     long daysBetween = getDaysBetween(dateFrom, dateTo);
-    println(dateFrom);
-    println(dateTo);
 
     fill(0);
     textSize(SMALL_TEXT_SIZE);
