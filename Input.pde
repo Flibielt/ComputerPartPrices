@@ -34,7 +34,7 @@ void mouseClicked() {
   }
 }
 
-void mouseMoved() {
+void mouseDragged() {
   stockPlot.changeSelectedDate();
   computerPartPlot.changeSelectedDate();
 }
