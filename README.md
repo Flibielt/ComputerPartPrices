@@ -16,6 +16,12 @@ Shows the change of price between two dates.
 
 ![Columndiagram](/img/columndiagram.png)
 
+### CPU market share
+
+Pie chart showing the market share between AMD and Intel.
+
+![MArketshare](/img/marketshare.png)
+
 ## Sources
 ### Stock market
 BitCoin: https://finance.yahoo.com/quote/BTC-USD?p=BTC-USD
