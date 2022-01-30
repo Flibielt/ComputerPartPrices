@@ -62,11 +62,13 @@ void displayComputerPartNames() {
     int charCount = (c.name.length() >= MAX_TEXT_COUNT) ? MAX_TEXT_COUNT : c.name.length();
     String name = "";
     noFill();
-    if (c.selected && c.isSelectedDateInDataset()) {
-      name = c.name.substring(0, charCount) + ": " + formatNumber(c.getPrice(selectedDate));
+    name = c.name.substring(0, charCount);
+    if (c.selected) {
       fill(c.displayedColor);
+      if (c.isSelectedDateInDataset()) {
+        name = name + ": " + formatNumber(c.getPrice(selectedDate));
+      }
     } else {
-      name = c.name.substring(0, charCount);
       noFill();
     }
     textSize(NORMAL_TEXT_SIZE);
@@ -105,11 +107,13 @@ void displayStockData() {
   for (Stock stock : stocks) {
     String name = "";
     noFill();
-    if (stock.selected && stock.isSelectedDateInDataset()) {
-      name = stock.name + ": " + formatNumber(stock.getPrice(selectedDate));
+    name = stock.name;
+    if (stock.selected) {
       fill(stock.displayedColor);
+      if (stock.isSelectedDateInDataset()) {
+        name = stock.name + ": " + formatNumber(stock.getPrice(selectedDate));
+      }
     } else {
-      name = stock.name;
       noFill();
     }
     circle(textX + CHECKBOX_WIDTH + SMALL_MARGIN / 2 + textAscent() / 7.5, textY - textAscent() / 4, textAscent() / 2);
