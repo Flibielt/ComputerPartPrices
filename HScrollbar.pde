@@ -35,7 +35,7 @@ class HScrollbar {
     if (isFrom) {
       spos = xpos;
     } else {
-      spos = xpos + swidth - sheight / 2;
+      spos = xpos + swidth - sheight;
     }
     newspos = spos;
     sposMin = xpos;
