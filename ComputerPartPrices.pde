@@ -16,11 +16,13 @@ List<GlobalEvent> globalEvents;
 List<Stock> stocks;
 List<CpuMarketShare> cpuMarketshareChanges;
 
+int selectedMarketShare;
 LocalDate selectedDate, dateFrom, dateTo;
-boolean lineDiagram, columnDiagram;
+boolean lineDiagram, columnDiagram, marketshareDiagram;
 
 HScrollbar hs1;
 HScrollbar hs2;
+HScrollbarIndex hs3;
 DataVisualization computerPartPlot = new DataVisualization();
 DataVisualization stockPlot = new DataVisualization();
 
@@ -63,9 +65,11 @@ void draw() {
   if (lineDiagram) {
     displayPlots();
     displayScrollbar();
-  } else {
+  } else if(columnDiagram) {
     displayColumnDiagrams();
     displayTwoScrollbar();
+  } else if (marketshareDiagram) {
+    displayMarketShareScrollbar();
   }
 
   // Description with pop up hover, should be called at the end

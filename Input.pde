@@ -132,9 +132,16 @@ void checkClickOnControlButtons() {
     if (mouseX >= MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN) {
       lineDiagram = true;
       columnDiagram = false;
+      marketshareDiagram = false;
     } else if (mouseX >= MARGIN + textWidth(lineDiagramText) + 2 * SMALL_MARGIN && mouseX <= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText) + 4 * SMALL_MARGIN) {
       lineDiagram = false;
       columnDiagram = true;
+      marketshareDiagram = false;
+    } else if (mouseX >= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText) + 4 * SMALL_MARGIN &&
+              mouseX <= MARGIN + textWidth(lineDiagramText) + textWidth(columnDiagramText) + 6 * SMALL_MARGIN + textWidth(marketShareText)) {
+      lineDiagram = false;
+      columnDiagram = false;
+      marketshareDiagram = true;
     }
   }
 }

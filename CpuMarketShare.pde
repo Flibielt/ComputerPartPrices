@@ -22,6 +22,12 @@ void loadCpuMarketShare() {
     float intelMarkerShare = row.getFloat("Intel");
     float amdMarketShare = row.getFloat("AMD");
 
-    CpuMarketShare cpuMarketshare = new CpuMarketShare(date, intelMarkerShare, amdMarketShare);
+    cpuMarketshareChanges.add(new CpuMarketShare(date, intelMarkerShare, amdMarketShare));
   }
+}
+
+void displayMarketShareScrollbar() {
+  hs3.update();
+  hs3.display();
+  selectedMarketShare = hs3.index;
 }

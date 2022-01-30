@@ -4,6 +4,7 @@ void initScrollbar() {
 
   hs1 = new HScrollbar(x, y, int(WINDOW_RIGHT_COLUMN), int(DATE_PICKER_HEIGHT), 1);
   hs2 = new HScrollbar(x, y + SMALL_MARGIN + DATE_PICKER_HEIGHT, int(WINDOW_RIGHT_COLUMN), int(DATE_PICKER_HEIGHT), 1);
+  hs3 = new HScrollbarIndex(x, y, int(WINDOW_RIGHT_COLUMN), int(DATE_PICKER_HEIGHT), 1);
 
   hs1.isFrom = false;
   hs2.isFrom = true;
