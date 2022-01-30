@@ -70,6 +70,7 @@ void draw() {
     displayTwoScrollbar();
   } else if (marketshareDiagram) {
     displayMarketShareScrollbar();
+    displayMarketSharePieChart();
   }
 
   // Description with pop up hover, should be called at the end
