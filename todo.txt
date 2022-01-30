@@ -1,5 +1,0 @@
-világvizsonylatban eladási számok
-színmkezelés
-plot box megjelenés
-egér kezelés
-plot szűkítés
