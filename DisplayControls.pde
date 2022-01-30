@@ -44,7 +44,5 @@ void displayControls() {
   } else if (columnDiagram) {
     text("Dátumtól: " + dateFrom.format(dateDisplayFormatter), MARGIN, y + 2 * MARGIN);
     text("Dátumig: " + selectedDate.format(dateDisplayFormatter), MARGIN, y + 3 * MARGIN);
-  } else if (marketshareDiagram) {
-    text("Dátum: " + cpuMarketshareChanges.get(selectedMarketShare).date, MARGIN, y + 2 * MARGIN);
   }
 }
